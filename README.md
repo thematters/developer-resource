@@ -1,4 +1,4 @@
-Other language: [简体中文](./README-zh_hans.md)，[繁體中文](./README-zh_hant.md)
+Other language: [简体中文](./README-zh_hans.md), [繁體中文](./README-zh_hant.md)
 
 # Matters server API
 
