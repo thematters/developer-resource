@@ -1,13 +1,35 @@
-Other language: [简体中文](./README-zh_hans.md), [繁體中文](./README-zh_hant.md)
+[简体中文](./README-zh_hans.md), [繁體中文](./README-zh_hant.md)
 
-# Matters server API
+# Server API
 
-Matters uses GraphQL for the API layer. Queries and mutations can be tested [here](https://server-test.matters.news/playground), and a short introduction can be found [here](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
+Matters uses GraphQL for the API layer. Read API Document and test queries and mutations in [Apollo playground](https://server-test.matters.news/playground). A short introduction can be found [here](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
+
+# Reposories
+The following are major reposories used by matters.news.
+
+## Backend
+- [server](https://github.com/thematters/matters-server): Main repo for Matters server. Written in Typescript, using [Apollo Server](https://github.com/apollographql/apollo-server) for GraphQL API.
+- [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate cache in Matters server.
+- [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda function. Used to resize and transcode images in Matters server.
+
+## Frontend
+- [web](https://github.com/thematters/matters-web): Main repo for Matters web client. Written in Typescript, built with [React](https://reactjs.org/), [Nextjs](https://nextjs.org/) and [Apollo Client](https://github.com/apollographql/apollo-client).
+- [editor](https://github.com/thematters/matters-editor): Opinionated WYSWYG editor used at matters.news, built with on [Quill](https://github.com/quilljs/quill).
+- [upload client](https://github.com/thematters/apollo-upload-client): File upload for GraphQL. Fork of [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client) with persistence query support.
+
+## Shared
+- [slugify](https://github.com/thematters/slugify): Good old slugify with CJK charset support.
+- [docker](https://github.com/thematters/matters-docker): Docker images used by Matters Lab.
+- [slack notification](https://github.com/thematters/matters-slacknoti): AWS lambda function for sending notifications to slack for DevOps purpose.
 
 # Peer 2 peer clients
 
-[Hypha publication project](https://github.com/hypha-publication) develops peer 2 peer clients that are
-interoperable with Matters sever. Both [browser extension](https://github.com/hypha-publication/hypha-extension) and [desktop client](https://github.com/hypha-publication/hypha-desktop) are heavily under development and not ready for testing yet.
+Matters is actively finding better ways to deliver content in p2p protocols. Below are some related clients.
+* [Hypha publication project](https://github.com/hypha-publication): experimental projects for peer 2 peer clients to be
+interoperable with Matters sever. 
+  * [Hypha Desktop](https://github.com/hypha-publication/hypha-desktop): Desktop client based on [Election.js](https://www.electronjs.org/) and [IPFS](https://ipfs.io/). Can be downloaed directly and used as a IPFS browser.
+  * [Hypha extension](https://github.com/hypha-publication/hypha-extension): Browser extension client based on [js-ipfs](https://github.com/ipfs/js-ipfs) and [orbit-db](https://github.com/orbitdb/orbit-db). Can be used for private p2p messaging etc. Heavily under development.
+* [Beaker Browser](https://github.com/beakerbrowser/beaker): A stable p2p browser supporting [`://dat` protocol](https://dat.foundation/). There are some [discussions](https://github.com/beakerbrowser/unwalled.garden/issues/51) and experiments about adapting Matters to Beaker Browser via [unwalled.garden](https://github.com/beakerbrowser/unwalled.garden) protocol and [Hyperdrive](https://github.com/hypercore-protocol/hyperdrive).
 
 # Community projects
 
@@ -15,9 +37,3 @@ interoperable with Matters sever. Both [browser extension](https://github.com/hy
 - [matters-muter](https://matters.news/@deserve/%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AFmatters%E7%9A%84%E5%85%A8%E7%AB%99%E5%B1%8F%E8%94%BD-%E6%8B%89%E9%BB%91-%E9%9D%99%E9%9F%B3%E5%8A%9F%E8%83%BD-zdpuAwGnxxMnyvaBJwCszuRrHjqprMohMPkXXWfYYKwEzvkrX): Browser extension to mute articles and comments of given users, support shared blacklist. For [Chrome](https://chrome.google.com/webstore/detail/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/hpbebebpjajeiadiakgckpahmhkbkpoa) and [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/), [open sourced](https://github.com/contributionls/matters-muter).
 - [matters2ipfs](https://matters.news/@deserve/matters%E6%96%87%E7%AB%A0%E7%8E%B0%E5%9C%A8%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E5%9C%A8%E7%BA%BF%E8%BD%AC%E4%B8%BA%E5%A2%99%E5%86%85%E9%93%BE%E6%8E%A5%E4%BA%86-zdpuB1bvMnsAr4APk12FmdRxcqMaEsRo46vKE7p6Arvsg4YiF): convert matters article to ipfs public gateway that can be accessed within GFW, [open sourced](https://github.com/contributionls/matters2ipfs).
 - [matters personal website](https://matters.news/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): personal website mirrored from matters.news, [open sourced](https://github.com/vibertthio/matters-third-party).
-
-# Matters open source
-
-- [Matters editor](https://github.com/thematters/matters-editor): WYSWYG editor used by matters.news, based on [Quill](https://github.com/quilljs/quill).
-- [slugify](https://github.com/thematters/slugify): Good old slugify with CJK charset support.
-- [apollo-upload-client](https://github.com/thematters/apollo-upload-client): Fork of [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client) with persistence query support.
