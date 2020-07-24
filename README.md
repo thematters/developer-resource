@@ -11,10 +11,11 @@ The following are major reposories used by matters.news.
 - [server](https://github.com/thematters/matters-server): Main repo for Matters server. Written in Typescript, using [Apollo Server](https://github.com/apollographql/apollo-server) for GraphQL API.
 - [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate cache in Matters server.
 - [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda function. Used to resize and transcode images in Matters server.
+- [queue dashboard](https://github.com/thematters/matters-queue-dashboard): GUI for for [Bee Queue](https://github.com/bee-queue/bee-queue) and [Bull](https://github.com/optimalbits/bull). Used to view queue jobs in Matters server.
 
 ## Frontend
 - [web](https://github.com/thematters/matters-web): Main repo for Matters web client. Written in Typescript, built with [React](https://reactjs.org/), [Nextjs](https://nextjs.org/) and [Apollo Client](https://github.com/apollographql/apollo-client).
-- [editor](https://github.com/thematters/matters-editor): Opinionated WYSWYG editor used at matters.news, built with on [Quill](https://github.com/quilljs/quill).
+- [editor](https://github.com/thematters/matters-editor): Opinionated WYSWYG editor used at matters.news, built with [Quilljs](https://github.com/quilljs/quill).
 - [upload client](https://github.com/thematters/apollo-upload-client): File upload for GraphQL. Fork of [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client) with persistence query support.
 
 ## Shared
