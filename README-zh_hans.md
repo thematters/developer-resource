@@ -4,8 +4,12 @@
 
 Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。开發者可以在 [Apollo Playground](https://server-test.matters.news/playground) 中查阅文档、进行调试。
 
+# 架构
+
+![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+
 # 代码仓库
-以下为Matters Lab代码仓库结构与分工。
+以下为 Matters Lab 代码仓库结构与分工。
 
 ## 后端
 - [server](https://github.com/thematters/matters-server): Matters 服务器主仓库。使用 Typescript，基于 [Apollo Server](https://github.com/apollographql/apollo-server)建构 GraphQL API。
