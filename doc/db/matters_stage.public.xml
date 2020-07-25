@@ -1,0 +1,1627 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<database name="matters_stage" schema="public" type="PostgreSQL - 10.6">
+   <sequences>
+      <sequence increment="1" name="action_article_id_seq" startValue="1"/>
+      <sequence increment="1" name="action_comment_id_seq" startValue="1"/>
+      <sequence increment="1" name="action_tag_id_seq" startValue="1"/>
+      <sequence increment="1" name="action_user_id_seq" startValue="1"/>
+      <sequence increment="1" name="appreciation_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_boost_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_read_count_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_read_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_recommend_setting_id_seq" startValue="1"/>
+      <sequence increment="1" name="article_tag_id_seq" startValue="1"/>
+      <sequence increment="1" name="asset_id_seq" startValue="1"/>
+      <sequence increment="1" name="asset_map_id_seq" startValue="1"/>
+      <sequence increment="1" name="audio_draft_id_seq" startValue="1"/>
+      <sequence increment="1" name="blocklist_id_seq" startValue="1"/>
+      <sequence increment="1" name="collection_id_seq" startValue="1"/>
+      <sequence increment="1" name="comment_id_seq" startValue="1"/>
+      <sequence increment="1" name="comment_mentioned_user_id_seq" startValue="1"/>
+      <sequence increment="1" name="customer_id_seq" startValue="1"/>
+      <sequence increment="1" name="draft_id_seq" startValue="1"/>
+      <sequence increment="1" name="entity_type_id_seq" startValue="1"/>
+      <sequence increment="1" name="feature_flag_id_seq" startValue="1"/>
+      <sequence increment="1" name="feedback_asset_id_seq" startValue="1"/>
+      <sequence increment="1" name="feedback_id_seq" startValue="1"/>
+      <sequence increment="1" name="invitation_id_seq" startValue="1"/>
+      <sequence increment="1" name="knex_migrations_id_seq" startValue="1"/>
+      <sequence increment="1" name="log_record_id_seq" startValue="1"/>
+      <sequence increment="1" name="matters_choice_id_seq" startValue="1"/>
+      <sequence increment="1" name="matters_today_id_seq" startValue="1"/>
+      <sequence increment="1" name="notice_actor_id_seq" startValue="1"/>
+      <sequence increment="1" name="notice_detail_id_seq" startValue="1"/>
+      <sequence increment="1" name="notice_entity_id_seq" startValue="1"/>
+      <sequence increment="1" name="notice_id_seq" startValue="1"/>
+      <sequence increment="1" name="oauth_access_token_id_seq" startValue="1"/>
+      <sequence increment="1" name="oauth_authorization_code_id_seq" startValue="1"/>
+      <sequence increment="1" name="oauth_client_id_seq" startValue="1"/>
+      <sequence increment="1" name="oauth_refresh_token_id_seq" startValue="1"/>
+      <sequence increment="1" name="payout_account_id_seq" startValue="1"/>
+      <sequence increment="1" name="punish_record_id_seq" startValue="1"/>
+      <sequence increment="1" name="push_device_id_seq" startValue="1"/>
+      <sequence increment="1" name="release_id_seq" startValue="1"/>
+      <sequence increment="1" name="report_asset_id_seq" startValue="1"/>
+      <sequence increment="1" name="report_id_seq" startValue="1"/>
+      <sequence increment="1" name="serach_history_id_seq" startValue="1"/>
+      <sequence increment="1" name="tag_boost_id_seq" startValue="1"/>
+      <sequence increment="1" name="tag_id_seq" startValue="1"/>
+      <sequence increment="1" name="transaction_id_seq" startValue="1"/>
+      <sequence increment="1" name="transaction_id_seq1" startValue="1"/>
+      <sequence increment="1" name="user_badge_id_seq" startValue="1"/>
+      <sequence increment="1" name="user_boost_id_seq" startValue="1"/>
+      <sequence increment="1" name="user_id_seq" startValue="1"/>
+      <sequence increment="1" name="user_notify_setting_id_seq" startValue="1"/>
+      <sequence increment="1" name="user_oauth_id_seq" startValue="1"/>
+      <sequence increment="1" name="user_oauth_likecoin_id_seq" startValue="1"/>
+      <sequence increment="1" name="username_edit_history_id_seq" startValue="1"/>
+      <sequence increment="1" name="verification_code_id_seq" startValue="1"/>
+   </sequences>
+   <tables>
+      <table name="action_article" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('action_article_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_article_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="action" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="target_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_article_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="action_article_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="action_article_action_index" unique="false">
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_article_target_id_action_index" unique="false">
+            <column ascending="true" name="target_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_article_user_id_action_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_article_user_id_action_target_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+            <column ascending="true" name="target_id"/>
+         </index>
+         <checkConstraint constraint="((action = 'subscribe'::text))" name="action_article_action_check"/>
+      </table>
+      <table name="action_comment" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('action_comment_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_comment_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="action" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="target_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_comment_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="action_comment_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="action_comment_action_index" unique="false">
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_comment_target_id_action_index" unique="false">
+            <column ascending="true" name="target_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_comment_user_id_action_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_comment_user_id_action_target_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+            <column ascending="true" name="target_id"/>
+         </index>
+         <checkConstraint constraint="((action = ANY (ARRAY['up_vote'::text, 'down_vote'::text])))" name="action_comment_action_check"/>
+      </table>
+      <table name="action_tag" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('action_tag_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_tag_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="action" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="target_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_tag_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="tag"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="action_tag_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="action_tag_user_id_action_target_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+            <column ascending="true" name="target_id"/>
+         </index>
+         <checkConstraint constraint="((action = 'follow'::text))" name="action_tag_action_check"/>
+      </table>
+      <table name="action_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('action_user_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_user_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="action" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="target_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="action_user_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="action_user_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="action_user_action_index" unique="false">
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_user_target_id_action_index" unique="false">
+            <column ascending="true" name="target_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_user_user_id_action_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+         </index>
+         <index name="action_user_user_id_action_target_id_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="action"/>
+            <column ascending="true" name="target_id"/>
+         </index>
+         <checkConstraint constraint="((action = ANY (ARRAY['follow'::text, 'rate'::text, 'block'::text])))" name="action_user_action_check"/>
+      </table>
+      <table name="appreciation" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('appreciation_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="sender_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="appreciation_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="recipient_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="appreciation_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="amount" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="purpose" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="reference_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="now()" digits="6" id="7" name="created_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="type" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <index name="appreciation_reference_id_purpose_index" unique="false">
+            <column ascending="true" name="reference_id"/>
+            <column ascending="true" name="purpose"/>
+         </index>
+         <checkConstraint constraint="((purpose = ANY (ARRAY['appreciate'::text, 'appreciate-comment'::text, 'appreciate-subsidy'::text, 'invitation-accepted'::text, 'join-by-invitation'::text, 'join-by-task'::text, 'first-post'::text, 'system-subsidy'::text])))" name="appreciation_purpose_check"/>
+         <checkConstraint constraint="((type = ANY (ARRAY['LIKE'::text, 'MAT'::text])))" name="appreciation_type_check"/>
+      </table>
+      <table name="article" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="target_id" foreignKey="action_article_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_article"/>
+            <child column="upstream_id" foreignKey="article_upstream_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+            <child column="article_id" foreignKey="article_boost_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_boost"/>
+            <child column="article_id" foreignKey="article_read_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_read"/>
+            <child column="article_id" foreignKey="article_read_count_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_read_count"/>
+            <child column="article_id" foreignKey="article_recommend_setting_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_recommend_setting"/>
+            <child column="article_id" foreignKey="article_tag_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_tag"/>
+            <child column="article_id" foreignKey="collection_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="collection"/>
+            <child column="entrance_id" foreignKey="collection_entrance_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="collection"/>
+            <child column="article_id" foreignKey="comment_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+            <child column="upstream_id" foreignKey="draft_upstream_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="draft"/>
+            <child column="article_id" foreignKey="matters_choice_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="matters_choice"/>
+            <child column="article_id" foreignKey="matters_today_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="matters_today"/>
+            <child column="article_id" foreignKey="report_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="upstream_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_upstream_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="title" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="slug" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="summary" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="word_count" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="data_hash" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="media_hash" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="content" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::text" digits="0" id="12" name="state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="13" name="public" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="14" name="live" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="15" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="16" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="draft_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_draft_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="draft"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="19" name="sticky" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="language" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="article_author_id_index" unique="false">
+            <column ascending="true" name="author_id"/>
+         </index>
+         <index name="article_author_id_state_index" unique="false">
+            <column ascending="true" name="author_id"/>
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="article_created_at_index" unique="false">
+            <column ascending="true" name="created_at"/>
+         </index>
+         <index name="article_media_hash_index" unique="false">
+            <column ascending="true" name="media_hash"/>
+         </index>
+         <index name="article_state_index" unique="false">
+            <column ascending="true" name="state"/>
+         </index>
+         <checkConstraint constraint="((state = ANY (ARRAY['active'::text, 'banned'::text, 'archived'::text])))" name="article_state_check"/>
+      </table>
+      <table name="article_activity_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT article_activity_view.id,&#10;    article_activity_view.title,&#10;    article_activity_view.created_at,&#10;    article_activity_view.base_score,&#10;    article_activity_view.boost_score_1,&#10;    article_activity_view.boost_score_2,&#10;    article_activity_view.score&#10;   FROM article_activity_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="base_score" nullable="true" remarks="" size="131089" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="boost_score_1" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="boost_score_2" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_activity_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT scores.id,&#10;    scores.title,&#10;    scores.created_at,&#10;    scores.base_score,&#10;    scores.boost_score_1,&#10;    scores.boost_score_2,&#10;    (((scores.base_score + (scores.boost_score_1)::numeric))::double precision + scores.boost_score_2) AS score&#10;   FROM ( SELECT article.id,&#10;            article.title,&#10;            article.created_at,&#10;            LEAST(((((0.5 * (COALESCE(cc.comment_12_hrs, (0)::bigint))::numeric) + ((2 * COALESCE(lc1.like_24_hrs, (0)::bigint)))::numeric) * ((2 + pd.post_days))::numeric) / ((1 + pd.post_days))::numeric), (300)::numeric) AS base_score,&#10;            ((15 * COALESCE(cc.comment_30_mins, (0)::bigint)) + (60 * COALESCE(lc2.like_30_mins, (0)::bigint))) AS boost_score_1,&#10;            (GREATEST(((120)::double precision - ((2)::double precision * fc.since_comment)), (0)::double precision) + GREATEST(((240)::double precision - ((2)::double precision * fl.since_like)), (0)::double precision)) AS boost_score_2&#10;           FROM ((((((article&#10;             LEFT JOIN ( SELECT comment.article_id,&#10;                    sum(((comment.created_at &gt;= (now() - '12:00:00'::interval)))::integer) AS comment_12_hrs,&#10;                    sum(((comment.created_at &gt;= (now() - '00:30:00'::interval)))::integer) AS comment_30_mins&#10;                   FROM comment&#10;                  GROUP BY comment.article_id) cc ON ((cc.article_id = article.id)))&#10;             LEFT JOIN ( SELECT appreciation.reference_id,&#10;                    sum(appreciation.amount) AS like_24_hrs&#10;                   FROM appreciation&#10;                  WHERE ((appreciation.purpose = 'appreciate'::text) AND (appreciation.created_at &gt;= (now() - '24:00:00'::interval)))&#10;                  GROUP BY appreciation.reference_id) lc1 ON ((lc1.reference_id = article.id)))&#10;             LEFT JOIN ( SELECT appreciation.reference_id,&#10;                    sum(appreciation.amount) AS like_30_mins&#10;                   FROM appreciation&#10;                  WHERE ((appreciation.purpose = 'appreciate'::text) AND (appreciation.created_at &gt;= (now() - '00:30:00'::interval)))&#10;                  GROUP BY appreciation.reference_id) lc2 ON ((lc2.reference_id = article.id)))&#10;             LEFT JOIN ( SELECT article_1.id,&#10;                    (CURRENT_DATE - (article_1.created_at)::date) AS post_days&#10;                   FROM article article_1) pd ON ((pd.id = article.id)))&#10;             LEFT JOIN ( SELECT comment.article_id,&#10;                    (date_part('epoch'::text, (now() - min(comment.created_at))) / (60)::double precision) AS since_comment&#10;                   FROM comment&#10;                  WHERE (comment.created_at &gt;= (now() - '30 days'::interval))&#10;                  GROUP BY comment.article_id) fc ON ((fc.article_id = article.id)))&#10;             LEFT JOIN ( SELECT appreciation.reference_id,&#10;                    (date_part('epoch'::text, (now() - min(appreciation.created_at))) / (60)::double precision) AS since_like&#10;                   FROM appreciation&#10;                  WHERE ((appreciation.purpose = 'appreciate'::text) AND (appreciation.created_at &gt;= (now() - '30 days'::interval)))&#10;                  GROUP BY appreciation.reference_id) fl ON ((fl.reference_id = article.id)))) scores&#10;  WHERE (NOT (scores.id IN ( SELECT matters_today.article_id&#10;           FROM matters_today&#10;          ORDER BY matters_today.updated_at DESC&#10;         LIMIT 1)));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="base_score" nullable="true" remarks="" size="131089" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="boost_score_1" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="boost_score_2" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_boost" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_boost_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_boost_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'1'::real" digits="8" id="2" name="boost" nullable="true" remarks="" size="8" type="float4" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_boost_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="article_count_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT article_count_view.id,&#10;    article_count_view.title,&#10;    article_count_view.comments_total,&#10;    article_count_view.commenters_7d,&#10;    article_count_view.commenters_1d,&#10;    article_count_view.recent_comment_since,&#10;    article_count_view.score&#10;   FROM article_count_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="comments_total" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="commenters_7d" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="commenters_1d" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="recent_comment_since" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_count_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT comment_score.id,&#10;    comment_score.title,&#10;    comment_score.comments_total,&#10;    comment_score.commenters_7d,&#10;    comment_score.commenters_1d,&#10;    comment_score.recent_comment_since,&#10;    ((((((comment_score.comments_total * 1) / 5) + (comment_score.commenters_7d * 10)))::double precision + (((comment_score.commenters_1d * 50))::double precision *&#10;        CASE&#10;            WHEN (comment_score.recent_comment_since &lt;= (8100)::double precision) THEN sqrt(((8100)::double precision / comment_score.recent_comment_since))&#10;            ELSE (1)::double precision&#10;        END)) * (&#10;        CASE&#10;            WHEN (comment_score.commenters_7d &gt; 2) THEN 1&#10;            ELSE 0&#10;        END)::double precision) AS score&#10;   FROM ( SELECT article.id,&#10;            article.title,&#10;            count(*) AS comments_total,&#10;            count(DISTINCT&#10;                CASE&#10;                    WHEN ((now() - comment.created_at) &lt;= '7 days'::interval) THEN comment.author_id&#10;                    ELSE NULL::bigint&#10;                END) AS commenters_7d,&#10;            count(DISTINCT&#10;                CASE&#10;                    WHEN ((now() - comment.created_at) &lt;= '1 day'::interval) THEN comment.author_id&#10;                    ELSE NULL::bigint&#10;                END) AS commenters_1d,&#10;            date_part('epoch'::text, (now() - max(comment.created_at))) AS recent_comment_since&#10;           FROM (article&#10;             LEFT JOIN comment ON ((article.id = comment.article_id)))&#10;          WHERE (comment.state = 'active'::text)&#10;          GROUP BY article.id) comment_score;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="comments_total" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="commenters_7d" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="commenters_1d" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="5" name="recent_comment_since" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="6" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_interest_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT article_interest_view.id,&#10;    article_interest_view.user_id,&#10;    article_interest_view.score&#10;   FROM article_interest_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_interest_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" WITH tag_interest AS (&#10;         SELECT user_tag.tag_id,&#10;            user_tag.user_id,&#10;            ((user_tag.count)::numeric / (tag_total.count)::numeric) AS interest&#10;           FROM (( SELECT article_tag.tag_id,&#10;                    articles.user_id,&#10;                    count(article_tag.tag_id) AS count&#10;                   FROM (( SELECT comment.article_id AS id,&#10;                            comment.author_id AS user_id&#10;                           FROM comment&#10;                        UNION&#10;                         SELECT appreciation.reference_id AS id,&#10;                            appreciation.sender_id AS user_id&#10;                           FROM appreciation) articles&#10;                     JOIN article_tag ON ((article_tag.article_id = articles.id)))&#10;                  WHERE (articles.user_id IS NOT NULL)&#10;                  GROUP BY article_tag.tag_id, articles.user_id) user_tag&#10;             JOIN ( SELECT count(article_tag.tag_id) AS count,&#10;                    article_tag.tag_id AS id&#10;                   FROM article_tag&#10;                  GROUP BY article_tag.tag_id) tag_total ON ((tag_total.id = user_tag.tag_id)))&#10;        ), article_interest AS (&#10;         SELECT article.id,&#10;            tag_interest.user_id,&#10;            sum(tag_interest.interest) AS interest&#10;           FROM ((article&#10;             JOIN article_tag ON ((article_tag.article_id = article.id)))&#10;             JOIN tag_interest ON ((article_tag.tag_id = tag_interest.tag_id)))&#10;          WHERE (article.state = 'active'::text)&#10;          GROUP BY article.id, tag_interest.user_id&#10;        )&#10; SELECT article_value_materialized.id,&#10;    article_interest.user_id,&#10;    ((((article_value_materialized.score)::numeric)::double precision / (( SELECT max(article_value_materialized_1.score) AS max&#10;           FROM article_value_materialized article_value_materialized_1) + (1)::double precision)) * ((article_interest.interest / (( SELECT max(article_interest_1.interest) AS max&#10;           FROM article_interest article_interest_1) + (1)::numeric)))::double precision) AS score&#10;   FROM ((article_value_materialized&#10;     JOIN article_interest ON ((article_interest.id = article_value_materialized.id)))&#10;     LEFT JOIN ( SELECT article_read_count.article_id,&#10;            article_read_count.user_id&#10;           FROM article_read_count&#10;          WHERE (article_read_count.user_id IS NOT NULL)) read ON (((read.article_id = article_interest.id) AND (read.user_id = article_interest.user_id))))&#10;  WHERE ((read.article_id IS NULL) AND (article_value_materialized.score &gt; (0)::double precision));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="2" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_read" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_read_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_read_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_read_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="4" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="ip" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_read_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="article_read_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="article_read_count" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_read_count_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_read_count_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_read_count_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="count" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="4" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="ip" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'0'::bigint" digits="0" id="8" name="read_time" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="'0'::bigint" digits="0" id="9" name="timed_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="10" name="last_read" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_read_count_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="article_read_count_user_id_article_id_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="article_id"/>
+         </index>
+      </table>
+      <table name="article_recommend_setting" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_recommend_setting_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_recommend_setting_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="2" name="in_hottest" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="3" name="in_newest" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_recommend_setting_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="article_recommend_setting_article_id_unique" unique="true">
+            <column ascending="true" name="article_id"/>
+         </index>
+      </table>
+      <table name="article_tag" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('article_tag_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_tag_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="tag_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="article_tag_tag_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="tag"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="selected" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="creator" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="article_tag_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="article_tag_article_id_index" unique="false">
+            <column ascending="true" name="article_id"/>
+         </index>
+         <index name="article_tag_tag_id_index" unique="false">
+            <column ascending="true" name="tag_id"/>
+         </index>
+      </table>
+      <table name="article_value_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT article_value_view.id,&#10;    article_value_view.title,&#10;    article_value_view.created_at,&#10;    article_value_view.score,&#10;    article_value_view.base_score1,&#10;    article_value_view.base_score2,&#10;    article_value_view.boost_score1,&#10;    article_value_view.boost_score2&#10;   FROM article_value_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="base_score1" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="base_score2" nullable="true" remarks="" size="131089" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="boost_score1" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="boost_score2" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="article_value_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT scores.id,&#10;    scores.title,&#10;    scores.created_at,&#10;    (((scores.base_score1 + (scores.base_score2)::double precision) + (scores.boost_score1)::double precision) + scores.boost_score2) AS score,&#10;    scores.base_score1,&#10;    scores.base_score2,&#10;    scores.boost_score1,&#10;    scores.boost_score2&#10;   FROM ( SELECT article.id,&#10;            article.title,&#10;            article.created_at,&#10;            LEAST(COALESCE(d1.donation_sum, (0)::double precision), (2000)::double precision) AS base_score1,&#10;            LEAST((((COALESCE(r1.read_2_days, (0)::numeric) / (5000)::numeric) * ((2 + pd.post_days))::numeric) / ((1 + pd.post_days))::numeric), (1000)::numeric) AS base_score2,&#10;            ((100 * COALESCE(lc2.like_30_mins, (0)::bigint)) + (500 * COALESCE(d2.donation_30_mins, (0)::bigint))) AS boost_score1,&#10;            ((GREATEST(((400)::double precision - ((2)::double precision * fc.since_comment)), (0)::double precision) + GREATEST(((600)::double precision - ((3)::double precision * fl.since_like)), (0)::double precision)) + GREATEST(((1000)::double precision - ((5)::double precision * fd.since_donate)), (0)::double precision)) AS boost_score2&#10;           FROM ((((((((article&#10;             LEFT JOIN ( SELECT transaction.target_id,&#10;                    sum(((1000)::double precision / power((((CURRENT_DATE - (transaction.created_at)::date) + 1))::double precision, (2)::double precision))) AS donation_sum&#10;                   FROM transaction&#10;                  WHERE ((transaction.purpose = 'donation'::text) AND (transaction.currency = 'HKD'::text))&#10;                  GROUP BY transaction.target_id) d1 ON ((d1.target_id = article.id)))&#10;             LEFT JOIN ( SELECT article_read_count.article_id,&#10;                    sum(article_read_count.read_time) AS read_2_days&#10;                   FROM article_read_count&#10;                  WHERE (article_read_count.updated_at &gt;= (now() - '2 days'::interval))&#10;                  GROUP BY article_read_count.article_id) r1 ON ((r1.article_id = article.id)))&#10;             LEFT JOIN ( SELECT appreciation.reference_id,&#10;                    sum(appreciation.amount) AS like_30_mins&#10;                   FROM appreciation&#10;                  WHERE (appreciation.created_at &gt;= (now() - '00:30:00'::interval))&#10;                  GROUP BY appreciation.reference_id) lc2 ON ((lc2.reference_id = article.id)))&#10;             LEFT JOIN ( SELECT transaction.target_id,&#10;                    count(transaction.id) AS donation_30_mins&#10;                   FROM transaction&#10;                  WHERE ((transaction.purpose = 'donation'::text) AND (transaction.currency = 'HKD'::text) AND (transaction.created_at &gt;= (now() - '00:30:00'::interval)))&#10;                  GROUP BY transaction.target_id) d2 ON ((d2.target_id = article.id)))&#10;             LEFT JOIN ( SELECT article_1.id,&#10;                    (CURRENT_DATE - (article_1.created_at)::date) AS post_days&#10;                   FROM article article_1) pd ON ((pd.id = article.id)))&#10;             LEFT JOIN ( SELECT transaction.target_id,&#10;                    (date_part('epoch'::text, (now() - min(transaction.created_at))) / (60)::double precision) AS since_donate&#10;                   FROM transaction&#10;                  WHERE ((transaction.purpose = 'donation'::text) AND (transaction.currency = 'HKD'::text) AND (transaction.created_at &gt;= (now() - '30 days'::interval)))&#10;                  GROUP BY transaction.target_id) fd ON ((fd.target_id = article.id)))&#10;             LEFT JOIN ( SELECT comment.article_id,&#10;                    (date_part('epoch'::text, (now() - min(comment.created_at))) / (60)::double precision) AS since_comment&#10;                   FROM comment&#10;                  WHERE (comment.created_at &gt;= (now() - '30 days'::interval))&#10;                  GROUP BY comment.article_id) fc ON ((fc.article_id = article.id)))&#10;             LEFT JOIN ( SELECT appreciation.reference_id,&#10;                    (date_part('epoch'::text, (now() - min(appreciation.created_at))) / (60)::double precision) AS since_like&#10;                   FROM appreciation&#10;                  WHERE (appreciation.created_at &gt;= (now() - '30 days'::interval))&#10;                  GROUP BY appreciation.reference_id) fl ON ((fl.reference_id = article.id)))) scores;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="3" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="4" name="base_score1" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="base_score2" nullable="true" remarks="" size="131089" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="boost_score1" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="boost_score2" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="asset" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('asset_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="cover" foreignKey="article_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+            <child column="asset_id" foreignKey="asset_map_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset_map"/>
+            <child column="audio" foreignKey="audio_draft_audio_foreign" implied="false" onDeleteCascade="false" schema="public" table="audio_draft"/>
+            <child column="cover" foreignKey="draft_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="draft"/>
+            <child column="asset_id" foreignKey="feedback_asset_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="feedback_asset"/>
+            <child column="avatar" foreignKey="oauth_client_avatar_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_client"/>
+            <child column="cover" foreignKey="release_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="release"/>
+            <child column="asset_id" foreignKey="report_asset_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report_asset"/>
+            <child column="avatar" foreignKey="user_avatar_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="asset_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="path" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="asset_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="asset_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="asset_map" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('asset_map_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="asset_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="asset_map_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="entity_type_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="asset_map_entity_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="entity_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="entity_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="asset_map_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="asset_map_asset_id_entity_type_id_entity_id_unique" unique="true">
+            <column ascending="true" name="asset_id"/>
+            <column ascending="true" name="entity_type_id"/>
+            <column ascending="true" name="entity_id"/>
+         </index>
+      </table>
+      <table name="audio_draft" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('audio_draft_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="audio_draft_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="title" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="audio" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="audio_draft_audio_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="5" name="length" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="audio_draft_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="audio_draft_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="blocklist" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('blocklist_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="value" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="4" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="note" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="blocklist_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="blocklist_type_value_archived_index" unique="false">
+            <column ascending="true" name="type"/>
+            <column ascending="true" name="value"/>
+            <column ascending="true" name="archived"/>
+         </index>
+         <index name="blocklist_type_value_unique" unique="true">
+            <column ascending="true" name="type"/>
+            <column ascending="true" name="value"/>
+         </index>
+         <checkConstraint constraint="((type = ANY (ARRAY['agent_hash'::text, 'email'::text, 'domain'::text])))" name="blocklist_type_check"/>
+      </table>
+      <table name="collection" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('collection_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="entrance_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="collection_entrance_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="collection_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="order" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="collection_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="collection_article_id_index" unique="false">
+            <column ascending="true" name="article_id"/>
+         </index>
+         <index name="collection_entrance_id_index" unique="false">
+            <column ascending="true" name="entrance_id"/>
+         </index>
+         <index name="collection_order_index" unique="false">
+            <column ascending="true" name="order"/>
+         </index>
+      </table>
+      <table name="comment" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('comment_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="target_id" foreignKey="action_comment_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_comment"/>
+            <child column="parent_comment_id" foreignKey="comment_parent_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+            <child column="reply_to" foreignKey="comment_reply_to_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+            <child column="comment_id" foreignKey="comment_mentioned_user_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment_mentioned_user"/>
+            <child column="comment_id" foreignKey="report_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="parent_comment_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_parent_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::text" digits="0" id="6" name="state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="pinned" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="8" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="9" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="quotation_start" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="quotation_end" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="quotation_content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="reply_to" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_reply_to_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="comment_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="comment_article_id_state_index" unique="false">
+            <column ascending="true" name="article_id"/>
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="comment_author_id_state_index" unique="false">
+            <column ascending="true" name="author_id"/>
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="comment_parent_comment_id_state_index" unique="false">
+            <column ascending="true" name="parent_comment_id"/>
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="comment_state_index" unique="false">
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="comment_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <checkConstraint constraint="((state = ANY (ARRAY['active'::text, 'archived'::text, 'banned'::text, 'collapsed'::text])))" name="comment_state_check"/>
+      </table>
+      <table name="comment_mentioned_user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('comment_mentioned_user_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="comment_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_mentioned_user_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="comment_mentioned_user_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="comment_mentioned_user_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="customer" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('customer_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'stripe'::text" digits="0" id="2" name="provider" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="customer_id" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="customer_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="customer_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="customer_customer_id_unique" unique="true">
+            <column ascending="true" name="customer_id"/>
+         </index>
+         <index name="customer_provider_customer_id_user_id_unique" unique="true">
+            <column ascending="true" name="provider"/>
+            <column ascending="true" name="customer_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+         <checkConstraint constraint="((provider = 'stripe'::text))" name="customer_provider_check"/>
+      </table>
+      <table name="draft" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('draft_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="draft_id" foreignKey="article_draft_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="draft_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="upstream_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="draft_upstream_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="title" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="draft_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="summary" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="'unpublished'::text" digits="0" id="9" name="publish_state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="tags" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="11" name="scheduled_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="12" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="13" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="collection" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="draft_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="draft_archived_index" unique="false">
+            <column ascending="true" name="archived"/>
+         </index>
+         <index name="draft_author_id_archived_index" unique="false">
+            <column ascending="true" name="author_id"/>
+            <column ascending="true" name="archived"/>
+         </index>
+         <index name="draft_publish_state_index" unique="false">
+            <column ascending="true" name="publish_state"/>
+         </index>
+         <index name="draft_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <checkConstraint constraint="((publish_state = ANY (ARRAY['unpublished'::text, 'pending'::text, 'published'::text, 'error'::text])))" name="draft_publish_state_check"/>
+      </table>
+      <table name="entity_type" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('entity_type_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="entity_type_id" foreignKey="asset_map_entity_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset_map"/>
+            <child column="entity_type_id" foreignKey="notice_entity_entity_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice_entity"/>
+            <child column="target_type" foreignKey="transaction_target_type_foreign" implied="false" onDeleteCascade="false" schema="public" table="transaction"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="table" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="entity_type_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="entity_type_table_unique" unique="true">
+            <column ascending="true" name="table"/>
+         </index>
+      </table>
+      <table name="feature_flag" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('feature_flag_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'off'::text" digits="0" id="4" name="flag" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="feature_flag_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="feature_flag_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+         <checkConstraint constraint="((flag = ANY (ARRAY['on'::text, 'off'::text, 'admin'::text])))" name="feature_flag_flag_check"/>
+      </table>
+      <table name="featured_comment_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT comment_score.id,&#10;    comment_score.uuid,&#10;    comment_score.author_id,&#10;    comment_score.article_id,&#10;    comment_score.parent_comment_id,&#10;    comment_score.content,&#10;    comment_score.state,&#10;    comment_score.pinned,&#10;    comment_score.created_at,&#10;    comment_score.updated_at,&#10;    comment_score.quotation_start,&#10;    comment_score.quotation_end,&#10;    comment_score.quotation_content,&#10;    comment_score.reply_to,&#10;    comment_score.remark,&#10;    comment_score.upvoted_id,&#10;    comment_score.upvote_count,&#10;    comment_score.downvoted_id,&#10;    comment_score.downvote_count,&#10;    comment_score.score&#10;   FROM ( SELECT comment.id,&#10;            comment.uuid,&#10;            comment.author_id,&#10;            comment.article_id,&#10;            comment.parent_comment_id,&#10;            comment.content,&#10;            comment.state,&#10;            comment.pinned,&#10;            comment.created_at,&#10;            comment.updated_at,&#10;            comment.quotation_start,&#10;            comment.quotation_end,&#10;            comment.quotation_content,&#10;            comment.reply_to,&#10;            comment.remark,&#10;            upvotes.upvoted_id,&#10;            upvotes.upvote_count,&#10;            downvotes.downvoted_id,&#10;            downvotes.downvote_count,&#10;            ((((COALESCE(upvotes.upvote_count, (0)::bigint) - COALESCE(downvotes.downvote_count, (0)::bigint)) + 1))::double precision * sqrt(((COALESCE(upvotes.upvote_count, (0)::bigint) + COALESCE(downvotes.downvote_count, (0)::bigint)))::double precision)) AS score&#10;           FROM ((comment&#10;             LEFT JOIN ( SELECT action.target_id AS upvoted_id,&#10;                    COALESCE(count(action.id), (0)::bigint) AS upvote_count&#10;                   FROM action_comment action&#10;                  WHERE (action.action = 'up_vote'::text)&#10;                  GROUP BY action.target_id) upvotes ON ((comment.id = upvotes.upvoted_id)))&#10;             LEFT JOIN ( SELECT action.target_id AS downvoted_id,&#10;                    COALESCE(count(action.id), (0)::bigint) AS downvote_count&#10;                   FROM action_comment action&#10;                  WHERE (action.action = 'down_vote'::text)&#10;                  GROUP BY action.target_id) downvotes ON ((comment.id = downvotes.downvoted_id)))&#10;          WHERE (comment.parent_comment_id IS NULL)) comment_score&#10;  WHERE ((comment_score.pinned = true) OR (comment_score.score &gt; (20)::double precision));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="author_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="article_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="parent_comment_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="state" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="pinned" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="9" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="quotation_start" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="quotation_end" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="quotation_content" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="reply_to" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="upvoted_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="16" name="upvote_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="17" name="downvoted_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="downvote_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="19" name="score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="feedback" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('feedback_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="feedback_id" foreignKey="feedback_asset_feedback_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="feedback_asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="feedback_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="category" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="contact" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="feedback_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="feedback_asset" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('feedback_asset_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="feedback_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="feedback_asset_feedback_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="feedback"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="asset_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="feedback_asset_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="feedback_asset_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="feedback_asset_feedback_id_asset_id_unique" unique="true">
+            <column ascending="true" name="feedback_id"/>
+            <column ascending="true" name="asset_id"/>
+         </index>
+      </table>
+      <table name="invitation" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('invitation_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="sender_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="invitation_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="recipient_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="invitation_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="status" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="email" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="invitation_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="invitation_email_unique" unique="true">
+            <column ascending="true" name="email"/>
+         </index>
+         <index name="invitation_sender_id_recipient_id_email_unique" unique="true">
+            <column ascending="true" name="sender_id"/>
+            <column ascending="true" name="recipient_id"/>
+            <column ascending="true" name="email"/>
+         </index>
+         <checkConstraint constraint="((status = ANY (ARRAY['pending'::text, 'activated'::text])))" name="invitation_status_check"/>
+      </table>
+      <table name="knex_migrations" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('knex_migrations_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="10" type="serial" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="name" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="batch" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="migration_time" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="knex_migrations_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="log_record" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('log_record_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="log_record_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="read_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="log_record_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="log_record_user_id_type_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="type"/>
+         </index>
+      </table>
+      <table name="matters_choice" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('matters_choice_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="matters_choice_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="matters_choice_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="matters_today" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('matters_today_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="article_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="matters_today_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="summary" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="matters_today_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="notice" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('notice_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="notice_id" foreignKey="notice_actor_notice_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice_actor"/>
+            <child column="notice_id" foreignKey="notice_entity_notice_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice_entity"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="4" name="unread" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="5" name="deleted" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="notice_detail_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_notice_detail_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice_detail"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="recipient_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="notice_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="notice_deleted_index" unique="false">
+            <column ascending="true" name="deleted"/>
+         </index>
+         <index name="notice_notice_detail_id_index" unique="false">
+            <column ascending="true" name="notice_detail_id"/>
+         </index>
+         <index name="notice_recipient_id_deleted_unread_index" unique="false">
+            <column ascending="true" name="recipient_id"/>
+            <column ascending="true" name="deleted"/>
+            <column ascending="true" name="unread"/>
+         </index>
+         <index name="notice_recipient_id_unread_index" unique="false">
+            <column ascending="true" name="recipient_id"/>
+            <column ascending="true" name="unread"/>
+         </index>
+         <index name="notice_unread_index" unique="false">
+            <column ascending="true" name="unread"/>
+         </index>
+         <index name="notice_updated_at_index" unique="false">
+            <column ascending="true" name="updated_at"/>
+         </index>
+         <index name="notice_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+      </table>
+      <table name="notice_actor" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('notice_actor_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="actor_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_actor_actor_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="notice_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_actor_notice_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="notice_actor_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="notice_actor_actor_id_notice_id_unique" unique="true">
+            <column ascending="true" name="actor_id"/>
+            <column ascending="true" name="notice_id"/>
+         </index>
+         <index name="notice_actor_notice_id_index" unique="false">
+            <column ascending="true" name="notice_id"/>
+         </index>
+      </table>
+      <table name="notice_detail" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('notice_detail_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="notice_detail_id" foreignKey="notice_notice_detail_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="notice_type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="message" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="data" nullable="true" remarks="" size="2147483647" type="jsonb" typeCode="1111"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="notice_detail_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="notice_detail_notice_type_index" unique="false">
+            <column ascending="true" name="notice_type"/>
+         </index>
+      </table>
+      <table name="notice_entity" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('notice_entity_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="type" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="entity_type_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_entity_entity_type_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="entity_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="entity_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="notice_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="notice_entity_notice_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="notice_entity_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="notice_entity_entity_type_id_index" unique="false">
+            <column ascending="true" name="entity_type_id"/>
+         </index>
+         <index name="notice_entity_notice_id_index" unique="false">
+            <column ascending="true" name="notice_id"/>
+         </index>
+         <index name="notice_entity_type_entity_type_id_entity_id_notice_id_unique" unique="true">
+            <column ascending="true" name="type"/>
+            <column ascending="true" name="entity_type_id"/>
+            <column ascending="true" name="entity_id"/>
+            <column ascending="true" name="notice_id"/>
+         </index>
+      </table>
+      <table name="oauth_access_token" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('oauth_access_token_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="token" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="client_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_access_token_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_client"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_access_token_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="expires" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="scope" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="oauth_access_token_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="oauth_access_token_token_unique" unique="true">
+            <column ascending="true" name="token"/>
+         </index>
+      </table>
+      <table name="oauth_authorization_code" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('oauth_authorization_code_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="code" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="client_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_authorization_code_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_client"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_authorization_code_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="redirect_uri" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="expires" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="scope" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="oauth_authorization_code_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="oauth_authorization_code_code_unique" unique="true">
+            <column ascending="true" name="code"/>
+         </index>
+      </table>
+      <table name="oauth_client" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('oauth_client_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="client_id" foreignKey="oauth_access_token_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_access_token"/>
+            <child column="client_id" foreignKey="oauth_authorization_code_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_authorization_code"/>
+            <child column="client_id" foreignKey="oauth_refresh_token_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_refresh_token"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="client_id" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="client_secret" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="redirect_uri" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="grant_types" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="scope" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_client_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="website_url" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="avatar" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_client_avatar_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="oauth_client_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="oauth_client_client_id_unique" unique="true">
+            <column ascending="true" name="client_id"/>
+         </index>
+         <index name="oauth_client_name_unique" unique="true">
+            <column ascending="true" name="name"/>
+         </index>
+      </table>
+      <table name="oauth_refresh_token" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('oauth_refresh_token_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="token" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="client_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_refresh_token_client_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_client"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="oauth_refresh_token_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="expires" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="scope" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="oauth_refresh_token_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="oauth_refresh_token_token_unique" unique="true">
+            <column ascending="true" name="token"/>
+         </index>
+      </table>
+      <table name="payout_account" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('payout_account_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="payout_account_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'stripe'::text" digits="0" id="4" name="provider" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'express'::text" digits="0" id="5" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="account_id" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="payout_account_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="payout_account_account_id_unique" unique="true">
+            <column ascending="true" name="account_id"/>
+         </index>
+         <index name="payout_account_provider_account_id_user_id_unique" unique="true">
+            <column ascending="true" name="provider"/>
+            <column ascending="true" name="account_id"/>
+            <column ascending="true" name="user_id"/>
+         </index>
+         <checkConstraint constraint="((provider = 'stripe'::text))" name="payout_account_provider_check"/>
+         <checkConstraint constraint="((type = ANY (ARRAY['express'::text, 'standard'::text])))" name="payout_account_type_check"/>
+      </table>
+      <table name="punish_record" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('punish_record_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="punish_record_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="3" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="expired_at" nullable="false" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="5" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="6" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="punish_record_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="punish_record_user_id_state_archived_index" unique="false">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="state"/>
+            <column ascending="true" name="archived"/>
+         </index>
+         <checkConstraint constraint="((state = 'banned'::text))" name="punish_record_state_check"/>
+      </table>
+      <table name="push_device" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('push_device_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="device_id" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="push_device_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'jpush'::text" digits="0" id="5" name="provider" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="user_agent" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="version" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="platform" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="push_device_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="push_device_device_id_unique" unique="true">
+            <column ascending="true" name="device_id"/>
+         </index>
+         <checkConstraint constraint="((platform = ANY (ARRAY['ios'::text, 'android'::text, 'web'::text])))" name="push_device_platform_check"/>
+         <checkConstraint constraint="((provider = ANY (ARRAY['jpush'::text, 'fcm'::text])))" name="push_device_provider_check"/>
+      </table>
+      <table name="release" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('release_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="title" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="release_cover_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="link" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="platform" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="channel" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="version" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="latest" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="9" name="force_update" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="10" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="release_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="release_platform_channel_version_unique" unique="true">
+            <column ascending="true" name="platform"/>
+            <column ascending="true" name="channel"/>
+            <column ascending="true" name="version"/>
+         </index>
+         <checkConstraint constraint="((channel = ANY (ARRAY['appStore'::text, 'googlePlay'::text])))" name="release_channel_check"/>
+         <checkConstraint constraint="((platform = ANY (ARRAY['ios'::text, 'android'::text])))" name="release_platform_check"/>
+      </table>
+      <table name="report" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('report_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="report_id" foreignKey="report_asset_report_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report_asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="report_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="article_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="report_article_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="comment_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="report_comment_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="category" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="contact" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="report_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="report_asset" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('report_asset_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="report_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="report_asset_report_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="asset_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="report_asset_asset_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="report_asset_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="report_asset_report_id_asset_id_unique" unique="true">
+            <column ascending="true" name="report_id"/>
+            <column ascending="true" name="asset_id"/>
+         </index>
+      </table>
+      <table name="search_history" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('serach_history_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="serach_history_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="search_key" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="3" name="archived" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="serach_history_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="tag" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('tag_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="target_id" foreignKey="action_tag_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_tag"/>
+            <child column="tag_id" foreignKey="article_tag_tag_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_tag"/>
+            <child column="tag_id" foreignKey="tag_boost_tag_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="tag_boost"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="content" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="5" name="deleted" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="editors" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="'81'::bigint" digits="0" id="9" name="creator" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="tag_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="tag_content_unique" unique="true">
+            <column ascending="true" name="content"/>
+         </index>
+      </table>
+      <table name="tag_boost" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('tag_boost_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="tag_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="tag_boost_tag_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="tag"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'1'::real" digits="8" id="2" name="boost" nullable="true" remarks="" size="8" type="float4" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="tag_boost_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="tag_count_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT tag_count_view.id,&#10;    tag_count_view.content,&#10;    tag_count_view.created_at,&#10;    tag_count_view.updated_at,&#10;    tag_count_view.recent_count,&#10;    tag_count_view.count,&#10;    tag_count_view.last_used,&#10;    tag_count_view.tag_score&#10;   FROM tag_count_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="content" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="recent_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="last_used" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="tag_score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="tag_count_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT tag.id,&#10;    tag.content,&#10;    tag.created_at,&#10;    tag.updated_at,&#10;    a1.recent_count,&#10;    a2.count,&#10;    a3.last_used,&#10;    (((COALESCE(a1.recent_count, (0)::bigint) * ((a3.last_used &gt;= (now() - '72:00:00'::interval)))::integer))::double precision * COALESCE(b.boost, (1)::real)) AS tag_score&#10;   FROM ((((tag&#10;     LEFT JOIN ( SELECT count(article_tag.id) AS recent_count,&#10;            article_tag.tag_id&#10;           FROM article_tag&#10;          WHERE (article_tag.created_at &gt;= (now() - '30 days'::interval))&#10;          GROUP BY article_tag.tag_id) a1 ON ((tag.id = a1.tag_id)))&#10;     LEFT JOIN ( SELECT count(article_tag.id) AS count,&#10;            article_tag.tag_id&#10;           FROM article_tag&#10;          GROUP BY article_tag.tag_id) a2 ON ((tag.id = a2.tag_id)))&#10;     LEFT JOIN ( SELECT max(article_tag.created_at) AS last_used,&#10;            article_tag.tag_id&#10;           FROM article_tag&#10;          GROUP BY article_tag.tag_id) a3 ON ((tag.id = a3.tag_id)))&#10;     LEFT JOIN ( SELECT tag_boost.boost,&#10;            tag_boost.tag_id&#10;           FROM tag_boost) b ON ((tag.id = b.tag_id)));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="content" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="recent_count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="count" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="last_used" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="7" name="tag_score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="transaction" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transaction_id_seq1'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="18" id="1" name="amount" nullable="true" remarks="" size="36" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="currency" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'pending'::text" digits="0" id="3" name="state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="purpose" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'stripe'::text" digits="0" id="5" name="provider" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="provider_tx_id" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="sender_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="transaction_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="recipient_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="transaction_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="target_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="target_type" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="transaction_target_type_foreign" implied="false" onDeleteCascade="false" schema="public" table="entity_type"/>
+         </column>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="11" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="12" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="18" id="13" name="fee" nullable="true" remarks="" size="36" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="remark" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="transaction_pkey1" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="transaction_created_at_index" unique="false">
+            <column ascending="true" name="created_at"/>
+         </index>
+         <index name="transaction_currency_index" unique="false">
+            <column ascending="true" name="currency"/>
+         </index>
+         <index name="transaction_provider_tx_id_unique" unique="true">
+            <column ascending="true" name="provider_tx_id"/>
+         </index>
+         <index name="transaction_purpose_index" unique="false">
+            <column ascending="true" name="purpose"/>
+         </index>
+         <index name="transaction_recipient_id_index" unique="false">
+            <column ascending="true" name="recipient_id"/>
+         </index>
+         <index name="transaction_sender_id_index" unique="false">
+            <column ascending="true" name="sender_id"/>
+         </index>
+         <index name="transaction_state_index" unique="false">
+            <column ascending="true" name="state"/>
+         </index>
+         <checkConstraint constraint="((currency = ANY (ARRAY['HKD'::text, 'LIKE'::text])))" name="transaction_currency_check"/>
+         <checkConstraint constraint="((provider = ANY (ARRAY['stripe'::text, 'likecoin'::text, 'matters'::text])))" name="transaction_provider_check"/>
+         <checkConstraint constraint="((purpose = ANY (ARRAY['appreciate'::text, 'appreciate-comment'::text, 'appreciate-subsidy'::text, 'invitation-accepted'::text, 'join-by-invitation'::text, 'join-by-task'::text, 'first-post'::text, 'system-subsidy'::text])))" name="transaction_purpose_check"/>
+         <checkConstraint constraint="((state = ANY (ARRAY['pending'::text, 'succeeded'::text, 'failed'::text, 'canceled'::text])))" name="transaction_state_check"/>
+      </table>
+      <table name="transaction_delta_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT &quot;user&quot;.id AS user_id,&#10;    trx1.amount AS delta,&#10;    trx1.id,&#10;    trx1.amount,&#10;    trx1.currency,&#10;    trx1.state,&#10;    trx1.purpose,&#10;    trx1.provider,&#10;    trx1.provider_tx_id,&#10;    trx1.sender_id,&#10;    trx1.recipient_id,&#10;    trx1.target_id,&#10;    trx1.target_type,&#10;    trx1.created_at,&#10;    trx1.updated_at&#10;   FROM (&quot;user&quot;&#10;     JOIN ( SELECT transaction.id,&#10;            transaction.amount,&#10;            transaction.currency,&#10;            transaction.state,&#10;            transaction.purpose,&#10;            transaction.provider,&#10;            transaction.provider_tx_id,&#10;            transaction.sender_id,&#10;            transaction.recipient_id,&#10;            transaction.target_id,&#10;            transaction.target_type,&#10;            transaction.created_at,&#10;            transaction.updated_at&#10;           FROM transaction) trx1 ON ((trx1.recipient_id = &quot;user&quot;.id)))&#10;UNION&#10; SELECT &quot;user&quot;.id AS user_id,&#10;    ((0)::numeric - trx2.amount) AS delta,&#10;    trx2.id,&#10;    trx2.amount,&#10;    trx2.currency,&#10;    trx2.state,&#10;    trx2.purpose,&#10;    trx2.provider,&#10;    trx2.provider_tx_id,&#10;    trx2.sender_id,&#10;    trx2.recipient_id,&#10;    trx2.target_id,&#10;    trx2.target_type,&#10;    trx2.created_at,&#10;    trx2.updated_at&#10;   FROM (&quot;user&quot;&#10;     JOIN ( SELECT transaction.id,&#10;            transaction.amount,&#10;            transaction.currency,&#10;            transaction.state,&#10;            transaction.purpose,&#10;            transaction.provider,&#10;            transaction.provider_tx_id,&#10;            transaction.sender_id,&#10;            transaction.recipient_id,&#10;            transaction.target_id,&#10;            transaction.target_type,&#10;            transaction.created_at,&#10;            transaction.updated_at&#10;           FROM transaction) trx2 ON ((trx2.sender_id = &quot;user&quot;.id)));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="delta" nullable="true" remarks="" size="131089" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="18" id="3" name="amount" nullable="true" remarks="" size="36" type="numeric" typeCode="2"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="currency" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="state" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="purpose" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="provider" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="provider_tx_id" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="sender_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="recipient_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="target_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="target_type" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="13" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="14" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+      </table>
+      <table name="transaction_obsolete" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('transaction_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="sender_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="transaction_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="recipient_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="transaction_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="amount" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="'appreciate'::text" digits="0" id="5" name="purpose" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="reference_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="7" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="'MAT'::text" digits="0" id="8" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="transaction_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="transaction_reference_id_purpose_index" unique="false">
+            <column ascending="true" name="reference_id"/>
+            <column ascending="true" name="purpose"/>
+         </index>
+         <checkConstraint constraint="((purpose = ANY (ARRAY['appreciate'::text, 'appreciate-comment'::text, 'appreciate-subsidy'::text, 'invitation-accepted'::text, 'join-by-invitation'::text, 'join-by-task'::text, 'first-post'::text, 'system-subsidy'::text])))" name="transaction_purpose_check"/>
+         <checkConstraint constraint="((type = ANY (ARRAY['LIKE'::text, 'MAT'::text])))" name="transaction_type_check"/>
+      </table>
+      <table name="user" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5">
+            <child column="user_id" foreignKey="action_article_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_article"/>
+            <child column="user_id" foreignKey="action_comment_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_comment"/>
+            <child column="user_id" foreignKey="action_tag_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_tag"/>
+            <child column="target_id" foreignKey="action_user_target_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_user"/>
+            <child column="user_id" foreignKey="action_user_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="action_user"/>
+            <child column="recipient_id" foreignKey="appreciation_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="appreciation"/>
+            <child column="sender_id" foreignKey="appreciation_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="appreciation"/>
+            <child column="author_id" foreignKey="article_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article"/>
+            <child column="user_id" foreignKey="article_read_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_read"/>
+            <child column="user_id" foreignKey="article_read_count_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="article_read_count"/>
+            <child column="author_id" foreignKey="asset_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+            <child column="author_id" foreignKey="audio_draft_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="audio_draft"/>
+            <child column="author_id" foreignKey="comment_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment"/>
+            <child column="user_id" foreignKey="comment_mentioned_user_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="comment_mentioned_user"/>
+            <child column="user_id" foreignKey="customer_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="customer"/>
+            <child column="author_id" foreignKey="draft_author_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="draft"/>
+            <child column="user_id" foreignKey="feedback_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="feedback"/>
+            <child column="recipient_id" foreignKey="invitation_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="invitation"/>
+            <child column="sender_id" foreignKey="invitation_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="invitation"/>
+            <child column="user_id" foreignKey="log_record_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="log_record"/>
+            <child column="recipient_id" foreignKey="notice_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice"/>
+            <child column="actor_id" foreignKey="notice_actor_actor_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="notice_actor"/>
+            <child column="user_id" foreignKey="oauth_access_token_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_access_token"/>
+            <child column="user_id" foreignKey="oauth_authorization_code_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_authorization_code"/>
+            <child column="user_id" foreignKey="oauth_client_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_client"/>
+            <child column="user_id" foreignKey="oauth_refresh_token_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="oauth_refresh_token"/>
+            <child column="user_id" foreignKey="payout_account_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="payout_account"/>
+            <child column="user_id" foreignKey="punish_record_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="punish_record"/>
+            <child column="user_id" foreignKey="push_device_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="push_device"/>
+            <child column="user_id" foreignKey="report_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="report"/>
+            <child column="user_id" foreignKey="serach_history_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="search_history"/>
+            <child column="recipient_id" foreignKey="transaction_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="transaction"/>
+            <child column="sender_id" foreignKey="transaction_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="transaction"/>
+            <child column="recipient_id" foreignKey="transaction_recipient_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="transaction_obsolete"/>
+            <child column="sender_id" foreignKey="transaction_sender_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="transaction_obsolete"/>
+            <child column="user_id" foreignKey="user_badge_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user_badge"/>
+            <child column="user_id" foreignKey="user_boost_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user_boost"/>
+            <child column="user_id" foreignKey="user_notify_setting_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user_notify_setting"/>
+            <child column="user_id" foreignKey="user_oauth_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user_oauth"/>
+            <child column="user_id" foreignKey="username_edit_history_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="username_edit_history"/>
+            <child column="user_id" foreignKey="verification_code_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="verification_code"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="display_name" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="avatar" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="user_avatar_foreign" implied="false" onDeleteCascade="false" schema="public" table="asset"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="email" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="email_verified" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="mobile" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="password_hash" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="500" digits="0" id="10" name="read_speed" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="11" name="base_gravity" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="0" digits="0" id="12" name="curr_gravity" nullable="false" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="'zh_hant'::text" digits="0" id="13" name="language" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'user'::text" digits="0" id="14" name="role" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::text" digits="0" id="15" name="state" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="16" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="17" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="remark" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="19" name="agree_on" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="20" name="liker_id" nullable="true" remarks="" size="255" type="varchar" typeCode="12">
+            <child column="liker_id" foreignKey="user_oauth_likecoin_liker_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user_oauth_likecoin"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="21" name="profile_cover" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="22" name="payment_password_hash" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="user_email_unique" unique="true">
+            <column ascending="true" name="email"/>
+         </index>
+         <index name="user_liker_id_unique" unique="true">
+            <column ascending="true" name="liker_id"/>
+         </index>
+         <index name="user_state_index" unique="false">
+            <column ascending="true" name="state"/>
+         </index>
+         <index name="user_user_name_unique" unique="true">
+            <column ascending="true" name="user_name"/>
+         </index>
+         <index name="user_uuid_index" unique="false">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <index name="user_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <checkConstraint constraint="((language = ANY (ARRAY['zh_hant'::text, 'zh_hans'::text, 'en'::text])))" name="user_language_check"/>
+         <checkConstraint constraint="((role = ANY (ARRAY['user'::text, 'admin'::text])))" name="user_role_check"/>
+         <checkConstraint constraint="((state = ANY (ARRAY['onboarding'::text, 'active'::text, 'banned'::text, 'frozen'::text, 'archived'::text])))" name="user_state_check"/>
+      </table>
+      <table name="user_badge" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_badge_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="user_badge_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_badge_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="user_badge_user_id_type_unique" unique="true">
+            <column ascending="true" name="user_id"/>
+            <column ascending="true" name="type"/>
+         </index>
+         <checkConstraint constraint="((type = 'seed'::text))" name="user_badge_type_check"/>
+      </table>
+      <table name="user_boost" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_boost_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="user_boost_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'1'::real" digits="8" id="2" name="boost" nullable="true" remarks="" size="8" type="float4" typeCode="7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_boost_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="user_notify_setting" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_notify_setting_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="user_notify_setting_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="2" name="enable" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="3" name="mention" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="4" name="follow" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="5" name="comment" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="6" name="appreciation" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="7" name="article_subscription" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="8" name="comment_subscribed" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="9" name="downstream" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="10" name="comment_pinned" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="11" name="comment_voted" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="12" name="wallet_update" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="13" name="official_notice" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="false" digits="0" id="14" name="report_feedback" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="15" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="16" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="17" name="email" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="true" digits="0" id="18" name="tag" nullable="false" remarks="" size="1" type="bool" typeCode="-7"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_notify_setting_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="user_oauth" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_oauth_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="user_oauth_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="access_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="4" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="refresh_token" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="provider" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="scope" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="8" name="expires" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_oauth_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <checkConstraint constraint="((provider = ANY (ARRAY['facebook'::text, 'google'::text, 'medium'::text])))" name="user_oauth_provider_check"/>
+      </table>
+      <table name="user_oauth_likecoin" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('user_oauth_likecoin_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="1" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="liker_id" nullable="false" remarks="" size="255" type="varchar" typeCode="12">
+            <parent column="liker_id" foreignKey="user_oauth_likecoin_liker_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="'temporal'::text" digits="0" id="4" name="account_type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="access_token" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="refresh_token" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="7" name="expires" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="scope" nullable="true" remarks="" size="2147483647" type="_text" typeCode="2003"/>
+         <column autoUpdated="false" defaultValue="null" digits="18" id="9" name="pending_like" nullable="true" remarks="" size="36" type="numeric" typeCode="2"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="user_oauth_likecoin_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="user_oauth_likecoin_liker_id_unique" unique="true">
+            <column ascending="true" name="liker_id"/>
+         </index>
+         <checkConstraint constraint="((account_type = ANY (ARRAY['temporal'::text, 'general'::text])))" name="user_oauth_likecoin_account_type_check"/>
+      </table>
+      <table name="user_reader_materialized" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT user_reader_view.id,&#10;    user_reader_view.uuid,&#10;    user_reader_view.user_name,&#10;    user_reader_view.display_name,&#10;    user_reader_view.description,&#10;    user_reader_view.avatar,&#10;    user_reader_view.email,&#10;    user_reader_view.email_verified,&#10;    user_reader_view.mobile,&#10;    user_reader_view.password_hash,&#10;    user_reader_view.read_speed,&#10;    user_reader_view.base_gravity,&#10;    user_reader_view.curr_gravity,&#10;    user_reader_view.language,&#10;    user_reader_view.role,&#10;    user_reader_view.state,&#10;    user_reader_view.created_at,&#10;    user_reader_view.updated_at,&#10;    user_reader_view.recent_appreciators,&#10;    user_reader_view.recent_reads,&#10;    user_reader_view.author_score&#10;   FROM user_reader_view;">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_name" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="display_name" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="avatar" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="email" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="email_verified" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="mobile" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="password_hash" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="read_speed" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="base_gravity" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="curr_gravity" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="language" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="role" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="state" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="16" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="17" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="recent_appreciators" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="recent_reads" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="20" name="author_score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="user_reader_view" numRows="0" remarks="" schema="public" type="VIEW" viewSql=" SELECT &quot;user&quot;.id,&#10;    &quot;user&quot;.uuid,&#10;    &quot;user&quot;.user_name,&#10;    &quot;user&quot;.display_name,&#10;    &quot;user&quot;.description,&#10;    &quot;user&quot;.avatar,&#10;    &quot;user&quot;.email,&#10;    &quot;user&quot;.email_verified,&#10;    &quot;user&quot;.mobile,&#10;    &quot;user&quot;.password_hash,&#10;    &quot;user&quot;.read_speed,&#10;    &quot;user&quot;.base_gravity,&#10;    &quot;user&quot;.curr_gravity,&#10;    &quot;user&quot;.language,&#10;    &quot;user&quot;.role,&#10;    &quot;user&quot;.state,&#10;    &quot;user&quot;.created_at,&#10;    &quot;user&quot;.updated_at,&#10;    a.recent_appreciators,&#10;    r.recent_reads,&#10;    (((COALESCE(a.recent_appreciators, (0)::bigint) * COALESCE(r.recent_reads, (0)::bigint)))::double precision * COALESCE(b.boost, (1)::real)) AS author_score&#10;   FROM (((&quot;user&quot;&#10;     LEFT JOIN ( SELECT count(DISTINCT ts.sender_id) AS recent_appreciators,&#10;            ar.author_id&#10;           FROM (transaction_obsolete ts&#10;             JOIN article ar ON ((ts.reference_id = ar.id)))&#10;          WHERE ((ts.created_at &gt;= (now() - '6 mons'::interval)) AND (ts.purpose = 'appreciate'::text))&#10;          GROUP BY ar.author_id) a ON ((a.author_id = &quot;user&quot;.id)))&#10;     LEFT JOIN ( SELECT count(DISTINCT a1.user_id) AS recent_reads,&#10;            a2.author_id&#10;           FROM (article_read a1&#10;             JOIN article a2 ON ((a1.article_id = a2.id)))&#10;          WHERE (a1.created_at &gt;= (now() - '6 mons'::interval))&#10;          GROUP BY a2.author_id) r ON ((r.author_id = &quot;user&quot;.id)))&#10;     LEFT JOIN ( SELECT user_boost.boost,&#10;            user_boost.user_id&#10;           FROM user_boost) b ON ((&quot;user&quot;.id = b.user_id)));">
+         <column autoUpdated="false" defaultValue="null" digits="0" id="0" name="id" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="true" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_name" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="display_name" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="description" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="avatar" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="6" name="email" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="email_verified" nullable="true" remarks="" size="1" type="bool" typeCode="-7"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="mobile" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="9" name="password_hash" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="read_speed" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="base_gravity" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="12" name="curr_gravity" nullable="true" remarks="" size="10" type="int4" typeCode="4"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="13" name="language" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="14" name="role" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="15" name="state" nullable="true" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="16" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="17" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="18" name="recent_appreciators" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="19" name="recent_reads" nullable="true" remarks="" size="19" type="int8" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="17" id="20" name="author_score" nullable="true" remarks="" size="17" type="float8" typeCode="8"/>
+      </table>
+      <table name="username_edit_history" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('username_edit_history_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="user_id" nullable="false" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="username_edit_history_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="previous" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="username_edit_history_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+      </table>
+      <table name="verification_code" remarks="" schema="public" type="TABLE">
+         <column autoUpdated="true" defaultValue="nextval('verification_code_id_seq'::regclass)" digits="0" id="0" name="id" nullable="false" remarks="" size="19" type="bigserial" typeCode="-5"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="1" name="uuid" nullable="false" remarks="" size="2147483647" type="uuid" typeCode="1111"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="2" name="created_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="CURRENT_TIMESTAMP" digits="6" id="3" name="updated_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="4" name="expired_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="5" name="verified_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="6" id="6" name="used_at" nullable="true" remarks="" size="35" type="timestamptz" typeCode="93"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="7" name="code" nullable="false" remarks="" size="255" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="8" name="type" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="'active'::text" digits="0" id="9" name="status" nullable="false" remarks="" size="2147483647" type="text" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="10" name="user_id" nullable="true" remarks="" size="19" type="int8" typeCode="-5">
+            <parent column="id" foreignKey="verification_code_user_id_foreign" implied="false" onDeleteCascade="false" schema="public" table="user"/>
+         </column>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="11" name="email" nullable="true" remarks="" size="255" type="varchar" typeCode="12"/>
+         <primaryKey column="id" sequenceNumberInPK="1"/>
+         <index name="verification_code_pkey" unique="true">
+            <column ascending="true" name="id"/>
+         </index>
+         <index name="verification_code_uuid_unique" unique="true">
+            <column ascending="true" name="uuid"/>
+         </index>
+         <checkConstraint constraint="((status = ANY (ARRAY['active'::text, 'inactive'::text, 'verified'::text, 'expired'::text, 'used'::text])))" name="verification_code_status_check"/>
+         <checkConstraint constraint="((type = ANY (ARRAY['register'::text, 'email_reset'::text, 'email_reset_confirm'::text, 'password_reset'::text, 'payment_password_reset'::text, 'email_verify'::text])))" name="verification_code_type_check"/>
+      </table>
+   </tables>
+</database>
