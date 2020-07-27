@@ -1,5 +1,18 @@
 [繁體中文](./README-zh_hant.md)，[英文](./README.md)
 
+# 欢迎
+
+本仓库是关于产品、开发与社群规则的文档和讨论的主入口。这里也包含不属于其他仓库的issue，例如需要前后端耦合的新功能提案。
+
+一些本仓库内的有用资源：
+
+* [API简介](#服务器-API)
+* [各仓库简介](#代码仓库)
+* [架构示意图](#架构)
+* [数据库文档](./doc)与[关系图](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [社区约章](./CODE_OF_CONDUCT.md)
+* [协作流程wiki](https://github.com/thematters/developer-resource/wiki)
+
 # 服务器 API
 
 Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。开發者可以在 [Apollo Playground](https://server-test.matters.news/playground) 中查阅文档、进行调试。
@@ -8,7 +21,10 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
 
+克隆当前仓库后，打开 `doc/db/index.html` 文件可查看 [SchemaSpy](http://schemaspy.org/) 数据库文档。
+
 # 代码仓库
+
 以下为 Matters Lab 代码仓库结构与分工。
 
 ## 后端

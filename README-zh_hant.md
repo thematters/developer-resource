@@ -1,5 +1,18 @@
 [简体中文](./README-zh_hans.md)，[英文](./README.md)
 
+# 歡迎
+
+本倉庫是關於產品、開发與社群規則的文檔和討論的主入口。這里也包含不屬於其他倉庫的issue，例如需要前後端耦合的新功能提案。
+
+一些本倉庫內的有用資源：
+
+* [API簡介](#服務器-API)
+* [各倉庫簡介](#代碼倉庫)
+* [架構示意圖](#架構)
+* [數據庫文檔](./doc)與[關系圖](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [社區約章](./CODE_OF_CONDUCT.md)
+* [協作流程wiki](https://github.com/thematters/developer-resource/wiki)
+
 # 服務器 API
 
 Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。開發者可以在 [Apollo Playground](https://server-test.matters.news/playground) 中查閱文檔、進行調試。
@@ -7,6 +20,8 @@ Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matte
 # 架構
 
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+
+克隆當前倉庫後，打開 `doc/db/index.html` 文件可查看 [SchemaSpy](http://schemaspy.org/) 數據庫文檔。
 
 # 代碼倉庫
 以下為 Matters Lab 代碼倉庫結構與分工。
