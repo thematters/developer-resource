@@ -1,5 +1,20 @@
 [简体中文](./README-zh_hans.md), [繁體中文](./README-zh_hant.md)
 
+# Welcome
+
+This repo is the main portal for documentations and discussions on product, development and community roles. General issues that do not fit in specific repos should also submitted here, for example new feature proposals that require client and server coupling.
+
+Some useful resources in this repo:
+
+* [Introduction to API](#server-api)
+* [Introduction to all reposories](#reposories)
+* [Architecture diagram](#architecture)
+* [Database documentation (html file)](./doc/db/index.html) and [relationship diagram](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [Code of conduct](./CODE_OF_CONDUCT.md)
+* [Wiki on collabration process](https://github.com/thematters/developer-resource/wiki)
+
+
+
 # Server API
 
 Matters uses GraphQL for the API layer. Read the API documention and test queries and mutations in [Apollo playground](https://server-test.matters.news/playground). A short introduction can be found [here](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
@@ -9,6 +24,7 @@ Matters uses GraphQL for the API layer. Read the API documention and test querie
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
 
 # Reposories
+
 The following are major reposories used by matters.news.
 
 ## Backend
