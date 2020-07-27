@@ -9,7 +9,7 @@
 * [API简介](#服务器-API)
 * [各仓库简介](#代码仓库)
 * [架构示意图](#架构)
-* [数据库文档（html 文件）](./doc/db/index.html)与[关系图](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [数据库文档](./doc)与[关系图](./doc/db/diagrams/summary/relationships.real.compact.svg)
 * [社区约章](./CODE_OF_CONDUCT.md)
 * [协作流程wiki](https://github.com/thematters/developer-resource/wiki)
 
@@ -21,7 +21,10 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
 
+克隆当前仓库后，打开 `doc/db/index.html` 文件可查看 [SchemaSpy](http://schemaspy.org/) 数据库文档。
+
 # 代码仓库
+
 以下为 Matters Lab 代码仓库结构与分工。
 
 ## 后端

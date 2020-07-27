@@ -9,10 +9,9 @@ Some useful resources in this repo:
 * [Introduction to API](#server-api)
 * [Introduction to all reposories](#reposories)
 * [Architecture diagram](#architecture)
-* [Database documentation (html file)](./doc/db/index.html) and [relationship diagram](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [Database documentation](./doc) and [relationship diagram](./doc/db/diagrams/summary/relationships.real.compact.svg)
 * [Code of conduct](./CODE_OF_CONDUCT.md)
 * [Wiki on collabration process](https://github.com/thematters/developer-resource/wiki)
-
 
 
 # Server API
@@ -22,6 +21,8 @@ Matters uses GraphQL for the API layer. Read the API documention and test querie
 # Architecture
 
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+
+After cloning this repo, you can view the [SchemaSpy](http://schemaspy.org/) generated database documentation by opening `doc/db/index.html`.
 
 # Reposories
 

@@ -9,7 +9,7 @@
 * [API簡介](#服務器-API)
 * [各倉庫簡介](#代碼倉庫)
 * [架構示意圖](#架構)
-* [數據庫文檔（html 文件）](./doc/db/index.html)與[關系圖](./doc/db/diagrams/summary/relationships.real.compact.svg)
+* [數據庫文檔](./doc)與[關系圖](./doc/db/diagrams/summary/relationships.real.compact.svg)
 * [社區約章](./CODE_OF_CONDUCT.md)
 * [協作流程wiki](https://github.com/thematters/developer-resource/wiki)
 
@@ -20,6 +20,8 @@ Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matte
 # 架構
 
 ![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+
+克隆當前倉庫後，打開 `doc/db/index.html` 文件可查看 [SchemaSpy](http://schemaspy.org/) 數據庫文檔。
 
 # 代碼倉庫
 以下為 Matters Lab 代碼倉庫結構與分工。

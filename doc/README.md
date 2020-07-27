@@ -1,4 +1,12 @@
-# Documentation generation
+# Viewing Documentation 
+
+## database
+
+1. clone this repo
+2. open `doc/db/index.html`
+3. you can also view the documentation with [htmlpreview](https://htmlpreview.github.io/?https://github.com/thematters/developer-resource/blob/master/doc/db/index.html), but diagram needs to be viewed [either locally or on GitHub](./db/diagram/summary/relationships.real.compact.svg)
+
+# Generating Documentation 
 
 ## database
 
