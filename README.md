@@ -49,7 +49,7 @@ The following are major reposories used by matters.news.
 Matters is actively finding better ways to deliver content in p2p protocols. Below are some related clients.
 * [Hypha publication project](https://github.com/hypha-publication): experimental projects for peer 2 peer clients to be
 interoperable with Matters sever. 
-  * [Hypha Desktop](https://github.com/hypha-publication/hypha-desktop): Desktop client based on [Election.js](https://www.electronjs.org/) and [IPFS](https://ipfs.io/). Can be downloaed directly and used as a IPFS browser.
+  * [Hypha Desktop](https://github.com/hypha-publication/hypha-desktop): Desktop client based on [Election.js](https://www.electronjs.org/) and [IPFS](https://ipfs.io/). Can be downloaded directly and used as a IPFS browser.
   * [Hypha extension](https://github.com/hypha-publication/hypha-extension): Browser extension client based on [js-ipfs](https://github.com/ipfs/js-ipfs) and [orbit-db](https://github.com/orbitdb/orbit-db). Can be used for private p2p messaging etc. Heavily under development.
 * [Beaker Browser](https://github.com/beakerbrowser/beaker): A stable p2p browser supporting [`://dat` protocol](https://dat.foundation/). There are some [discussions](https://github.com/beakerbrowser/unwalled.garden/issues/51) and experiments about adapting Matters to Beaker Browser via [unwalled.garden](https://github.com/beakerbrowser/unwalled.garden) protocol and [Hyperdrive](https://github.com/hypercore-protocol/hyperdrive).
 
