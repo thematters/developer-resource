@@ -64,3 +64,5 @@ Matters 在持續探索更好的點對點信息分發的機制和協議。以下
 感謝以下貢獻者的協助，讓我們的產品更加安全。你可以通過拉取請求來加入自己的名字。
 * [huli](https://zeroday.hitcon.org/user/aszx87410)
   * CORS misconfiguration
+* catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
+  * 上傳文件至 IPFS 時缺少大小或者域名檢查
