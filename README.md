@@ -66,3 +66,5 @@ We would like to thank everyone on the following list for making our products mo
 
 * [huli](https://zeroday.hitcon.org/user/aszx87410)
   * CORS misconfiguration
+* catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
+  * Missing size or domain check during uploading assets to IPFS
