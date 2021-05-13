@@ -2,7 +2,7 @@
 
 # Welcome
 
-This repo is the main portal for documentations and discussions on product, development and community roles. General issues that do not fit in specific repos should also submitted here, for example new feature proposals that require client and server coupling. You can also join us on [Gitter](https://gitter.im/thematters/community).
+This repo is the main portal for documentations and discussions on product, development and community roles. General issues that do not fit in specific repos should also submitted here, for example new feature proposals that require client and server coupling. You can also join us on community maintained [Discord](https://discord.gg/hTe8h7b39U).
 
 Some useful resources in this repo:
 

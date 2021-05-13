@@ -2,7 +2,7 @@
 
 # 欢迎
 
-本仓库是关于产品、开发与社群规则的文档和讨论的主入口。这里也包含不属于其他仓库的issue，例如需要前后端耦合的新功能提案。也欢迎在 [Gitter](https://gitter.im/thematters/community) 中加入我们。
+本仓库是关于产品、开发与社群规则的文档和讨论的主入口。这里也包含不属于其他仓库的issue，例如需要前后端耦合的新功能提案。也欢迎加入 [Matters 第三方社区 Discord](https://discord.gg/hTe8h7b39U)。
 
 一些本仓库内的有用资源：
 
