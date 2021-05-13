@@ -1,7 +1,7 @@
 [繁體中文](./SECURITY-zh_hant.md)，[English](./SECURITY.md)
 
 # 漏洞赏金计划
-我们通过赏金计划来邀请软件安全社区研究和發掘 Matters 平臺上的安全漏洞。如果你想要报告安全漏洞或者有问题询问，请通过 tech@matters.news 联繫我们。
+我们通过赏金计划来邀请软件安全社区研究和發掘 Matters 平臺上的安全漏洞。如果你想要报告安全漏洞或者有问题询问，请通过 security@matters.news 联繫我们。
 
 
 ## 符合标准的漏洞
