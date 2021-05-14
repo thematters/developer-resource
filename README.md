@@ -64,7 +64,9 @@ interoperable with Matters sever.
 
 We would like to thank everyone on the following list for making our products more secure. You can add yourself by making a pull request.
 
-* [huli](https://zeroday.hitcon.org/user/aszx87410)
+* huli ([GitHub](https://github.com/aszx87410), [HitCon](https://zeroday.hitcon.org/user/aszx87410))
   * CORS misconfiguration
+  * XSS with image src
+  * open redirect with iframe
 * catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
   * Missing size or domain check during uploading assets to IPFS
