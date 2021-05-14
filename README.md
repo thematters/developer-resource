@@ -66,6 +66,7 @@ We would like to thank everyone on the following list for making our products mo
 
 * huli ([GitHub](https://github.com/aszx87410), [HitCon](https://zeroday.hitcon.org/user/aszx87410))
   * CORS misconfiguration
-  * XSS and open redirect with iframe
+  * XSS with image src
+  * open redirect with iframe
 * catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
   * Missing size or domain check during uploading assets to IPFS
