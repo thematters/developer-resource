@@ -67,5 +67,8 @@ Matters 在持續探索更好的點對點信息分發的機制和協議。以下
   * CORS misconfiguration
   * 圖片 src XSS
   * iframe open redirect
+  * 登陸頁重定向 XSS
 * catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
   * 上傳文件至 IPFS 時缺少大小或者域名檢查
+* [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
+  * 登陸頁重定向 XSS
