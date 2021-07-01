@@ -68,5 +68,8 @@ We would like to thank everyone on the following list for making our products mo
   * CORS misconfiguration
   * XSS with image src
   * open redirect with iframe
+  * XSS on login redirect
 * catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
   * Missing size or domain check during uploading assets to IPFS
+* [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
+  * XSS on login redirect
