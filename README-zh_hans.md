@@ -63,11 +63,12 @@ Matters 在持续探索更好的点对点信息分發的机制和协议。以下
 # 名誉榜
 
 感谢以下贡献者的协助，让我们的产品更加安全。你可以通过拉取请求加入自己的名字。
-* [huli](https://zeroday.hitcon.org/user/aszx87410)
-  * CORS misconfiguration
 * huli ([GitHub](https://github.com/aszx87410), [HitCon](https://zeroday.hitcon.org/user/aszx87410))
   * CORS misconfiguration
   * 圖片 XSS
-  * iframe open redirect 
+  * iframe open redirect
+  * 登陆页重定向 XSS
 * catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
   * 上传文件至 IPFS 时缺少大小或者域名检查
+* [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
+  * 登陆页重定向 XSS
