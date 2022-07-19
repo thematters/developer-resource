@@ -1,4 +1,6 @@
-Currently migrating to [Notion](https://www.notion.so/matterslab/Engineering-Wiki-56fcfad89c3c479583e8d72b6d1c906e).
+Currently migrating to [Notion](https://matterslab.notion.site/Engineering-Wiki-56fcfad89c3c479583e8d72b6d1c906e).
+
+---
 
 [简体中文](./README-zh_hans.md), [繁體中文](./README-zh_hant.md)
 
