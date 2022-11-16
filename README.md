@@ -77,3 +77,5 @@ We would like to thank everyone on the following list for making our products mo
   * Missing size or domain check during uploading assets to IPFS
 * [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
   * XSS on login redirect
+* Unique Kamboj
+ * Missing SPF records on domain name
