@@ -78,4 +78,4 @@ We would like to thank everyone on the following list for making our products mo
 * [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
   * XSS on login redirect
 * Unique Kamboj
- * Missing SPF records on domain name
+  * Missing SPF records on domain name
