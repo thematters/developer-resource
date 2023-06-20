@@ -3,13 +3,14 @@
 # Security Bounty Program
 With a bounty program, we invite the software security community to research and discover security related bugs and vulnerabilities on Matters platform. 
 
-If you would like to report a vulnerability or have a question for us, please email us at security@matters.news.
+If you would like to report a vulnerability or have a question for us, please email us at security@matters.town.
 
 
 ## Issues That Qualify
 
 The following domains and assets are within the scope of the program:
 
+- *.matters.town
 - *.matters.news
 - [public codebase](https://github.com/thematters) of Matters Lab, including Matters web app delivered via HTTP or IPFS
 
@@ -46,7 +47,7 @@ Below are some issues we have determined as not posing a great risk, or requirin
 - Do not impact other users with your testing, this includes testing for vulnerabilities in accounts you do not own. We may suspend your account and ban your IP address if you do so.
 - Don’t use scanners or automated tools to find vulnerabilities. They create noise and extra pressure on our platform and we may suspend your account and ban your IP address.
 - Don't carry out non-technical attacks such as social engineering, phishing, or physical attacks against our employees, users, or infrastructure.
-- When in doubt, [email us](mailto:security@matters.news).
+- When in doubt, [email us](mailto:security@matters.town).
 
 
 ## And we will:
@@ -82,7 +83,7 @@ Critical severity issues present a direct and immediate risk to a broad array of
 High severity issues allow an attacker to read or modify sensitive data that they are not authorized to access. They are generally more narrow in scope than critical issues, though they may still grant an attacker extensive access. For example:
 
 
-- injecting attacker controlled content or code into matters.news webpages (XSS)
+- injecting attacker controlled content or code into matters.town webpages (XSS)
 - bypassing scope control to gain more access than intended
 - discovering sensitive user information in a publicly exposed resource
 - gaining access to a non-critical resource that only Matters team should be able to reach
