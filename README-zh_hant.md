@@ -15,7 +15,7 @@
 
 # 服務器 API
 
-Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matters.news/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。開發者可以在 [Apollo Playground](https://server-test.matters.news/playground) 中查閱文檔、進行調試。
+Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。開發者可以在 [Apollo Playground](https://server-test.matters.town/playground) 中查閱文檔、進行調試。
 
 # 架構
 
@@ -34,7 +34,7 @@ Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matte
 
 ## 前端
 - [web](https://github.com/thematters/matters-web): Matters 網頁客戶端主倉庫。使用 Typescript，基於 [React](https://reactjs.org/)，[Nextjs](https://nextjs.org/) 與 [Apollo Client](https://github.com/apollographql/apollo-client)。
-- [editor](https://github.com/thematters/matters-editor): matters.news 所見即所得編輯器，基於 [Quilljs](https://github.com/quilljs/quill)。
+- [editor](https://github.com/thematters/matters-editor): matters.town 所見即所得編輯器，基於 [Quilljs](https://github.com/quilljs/quill)。
 - [upload client](https://github.com/thematters/apollo-upload-client): GraphQL文件上傳組件。Fork 自 [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client)，支持 persistence query。
 
 ## 通用
@@ -54,10 +54,10 @@ Matters 在持續探索更好的點對點信息分發的機制和協議。以下
 
 # 社區項目
 
-- [MatREQ](https://matters.news/@jugu/%E9%9D%9E%E5%AE%98%E6%96%B9-matters%E8%A8%B1%E9%A1%98%E6%B1%A0-zdpuAxEfdxG6MdBHnE7rEvCeAG6TPay6i8ychgiq2EoRRMv2s): 向 Matters 用戶[請求特定主題的文章](https://mat.52tw.cc/)。
-- [matters 消音器](https://matters.news/@deserve/%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AFmatters%E7%9A%84%E5%85%A8%E7%AB%99%E5%B1%8F%E8%94%BD-%E6%8B%89%E9%BB%91-%E9%9D%99%E9%9F%B3%E5%8A%9F%E8%83%BD-zdpuAwGnxxMnyvaBJwCszuRrHjqprMohMPkXXWfYYKwEzvkrX): 瀏覽器插件，用於屏蔽特定用戶，支持共享黑名單。有[Chrome](https://chrome.google.com/webstore/detail/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/hpbebebpjajeiadiakgckpahmhkbkpoa) 與 [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/) 兩個版本，[代碼開源](https://github.com/contributionls/matters-muter)。
-- [matters2ipfs](https://matters.news/@deserve/matters%E6%96%87%E7%AB%A0%E7%8E%B0%E5%9C%A8%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E5%9C%A8%E7%BA%BF%E8%BD%AC%E4%B8%BA%E5%A2%99%E5%86%85%E9%93%BE%E6%8E%A5%E4%BA%86-zdpuB1bvMnsAr4APk12FmdRxcqMaEsRo46vKE7p6Arvsg4YiF): 將 Matters 文章轉為 ipfs 鏈接，可以在墻內打開，[代碼開源](https://github.com/contributionls/matters2ipfs).
-- [matters 個人網站](https://matters.news/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): 通過 matters.news 備份的個人網站，[代碼開源](https://github.com/vibertthio/matters-third-party)。
+- [MatREQ](https://matters.town/@jugu/%E9%9D%9E%E5%AE%98%E6%96%B9-matters%E8%A8%B1%E9%A1%98%E6%B1%A0-zdpuAxEfdxG6MdBHnE7rEvCeAG6TPay6i8ychgiq2EoRRMv2s): 向 Matters 用戶[請求特定主題的文章](https://mat.52tw.cc/)。
+- [matters 消音器](https://matters.town/@deserve/%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AFmatters%E7%9A%84%E5%85%A8%E7%AB%99%E5%B1%8F%E8%94%BD-%E6%8B%89%E9%BB%91-%E9%9D%99%E9%9F%B3%E5%8A%9F%E8%83%BD-zdpuAwGnxxMnyvaBJwCszuRrHjqprMohMPkXXWfYYKwEzvkrX): 瀏覽器插件，用於屏蔽特定用戶，支持共享黑名單。有[Chrome](https://chrome.google.com/webstore/detail/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/hpbebebpjajeiadiakgckpahmhkbkpoa) 與 [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/) 兩個版本，[代碼開源](https://github.com/contributionls/matters-muter)。
+- [matters2ipfs](https://matters.town/@deserve/matters%E6%96%87%E7%AB%A0%E7%8E%B0%E5%9C%A8%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E5%9C%A8%E7%BA%BF%E8%BD%AC%E4%B8%BA%E5%A2%99%E5%86%85%E9%93%BE%E6%8E%A5%E4%BA%86-zdpuB1bvMnsAr4APk12FmdRxcqMaEsRo46vKE7p6Arvsg4YiF): 將 Matters 文章轉為 ipfs 鏈接，可以在墻內打開，[代碼開源](https://github.com/contributionls/matters2ipfs).
+- [matters 個人網站](https://matters.town/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): 通過 matters.town 備份的個人網站，[代碼開源](https://github.com/vibertthio/matters-third-party)。
 
 # 名譽榜
 
@@ -68,7 +68,7 @@ Matters 在持續探索更好的點對點信息分發的機制和協議。以下
   * 圖片 src XSS
   * iframe open redirect
   * 登陸頁重定向 XSS
-* catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.news/@catding))
+* catding ([GitHub](https://github.com/catdingding), [Matters](https://matters.town/@catding))
   * 上傳文件至 IPFS 時缺少大小或者域名檢查
 * [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
   * 登陸頁重定向 XSS
