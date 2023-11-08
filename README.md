@@ -20,7 +20,7 @@ Some useful resources in this repo:
 
 # Server API
 
-Matters uses GraphQL for the API layer. Read the API documention and test queries and mutations in [Apollo playground](https://server-test.matters.town/playground). A short introduction can be found [here](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
+Matters uses GraphQL for the API layer. Read the API documention and test queries and mutations in [Apollo playground](https://server.matters.town/playground). A short introduction can be found [here](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
 
 # Architecture
 
