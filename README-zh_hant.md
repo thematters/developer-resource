@@ -15,7 +15,7 @@
 
 # 服務器 API
 
-Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。開發者可以在 [Apollo Playground](https://server-test.matters.town/playground) 中查閱文檔、進行調試。
+Matters 使用 GraphQL 作為 API 接口，詳情見[簡介文章](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs)。開發者可以在 [Apollo Playground](https://server.matters.town/playground) 中查閱文檔、進行調試。
 
 # 架構
 
