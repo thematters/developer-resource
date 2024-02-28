@@ -1,4 +1,4 @@
-Currently migrating to [Notion](https://matterslab.notion.site/Engineering-Wiki-56fcfad89c3c479583e8d72b6d1c906e).
+Please find more updated documentation and information on the day-to-day work of the Matters Lab development team on [Notion](https://matterslab.notion.site/Engineering-Wiki-56fcfad89c3c479583e8d72b6d1c906e).
 
 ---
 
@@ -6,7 +6,7 @@ Currently migrating to [Notion](https://matterslab.notion.site/Engineering-Wiki-
 
 # Welcome
 
-This repo is the main portal for documentations and discussions on product, development and community roles. General issues that do not fit in specific repos should also submitted here, for example new feature proposals that require client and server coupling. You can also join us on community maintained [Discord](https://discord.gg/hTe8h7b39U).
+This repo is the main portal for documentation and discussions on product, development, and community roles. General issues that do not fit in specific repos should also submitted here, for example, new feature proposals that require client and server coupling. You can also join us on community-maintained [Discord](https://discord.gg/hTe8h7b39U).
 
 Some useful resources in this repo:
 
@@ -15,12 +15,12 @@ Some useful resources in this repo:
 * [Architecture diagram](#architecture)
 * [Database documentation](./doc) and [relationship diagram](./doc/db/diagrams/summary/relationships.real.compact.svg)
 * [Code of conduct](./CODE_OF_CONDUCT.md)
-* [Wiki on collabration process](https://github.com/thematters/developer-resource/wiki)
+* [Wiki on collaboration process](https://github.com/thematters/developer-resource/wiki)
 
 
 # Server API
 
-Matters uses GraphQL for the API layer. Read the API documention and test queries and mutations in [Apollo playground](https://server.matters.town/playground). A short introduction can be found [here](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
+Matters uses GraphQL for the API layer. Read the API documentation and test queries and mutations in [Apollo playground](https://server.matters.town/playground). A short introduction can be found [here](https://matters.town/@robertu/%E7%A4%BE%E5%8D%80%E9%96%8B%E6%94%BE%E4%B8%80%E5%B0%8F%E6%AD%A5-matters-api-zdpuAyovU8xL9sYsV5rQfe35XhmN6okTVbnogCFH2J8cqAXCs).
 
 # Architecture
 
@@ -30,11 +30,11 @@ After cloning this repo, you can view the [SchemaSpy](http://schemaspy.org/) gen
 
 # Reposories
 
-The following are major reposories used by matters.town.
+The following are major repositories used by matters.town.
 
 ## Backend
 - [server](https://github.com/thematters/matters-server): Main repo for Matters server. Written in Typescript, using [Apollo Server](https://github.com/apollographql/apollo-server) for GraphQL API.
-- [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate cache in Matters server.
+- [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate the cache in Matters server.
 - [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda function. Used to resize and transcode images in Matters server.
 - [queue dashboard](https://github.com/thematters/matters-queue-dashboard): GUI for for [Bee Queue](https://github.com/bee-queue/bee-queue) and [Bull](https://github.com/optimalbits/bull). Used to view queue jobs in Matters server.
 
@@ -53,8 +53,8 @@ The following are major reposories used by matters.town.
 Matters is actively finding better ways to deliver content in p2p protocols. Below are some related clients.
 * [Hypha publication project](https://github.com/hypha-publication): experimental projects for peer 2 peer clients to be
 interoperable with Matters sever. 
-  * [Hypha Desktop](https://github.com/hypha-publication/hypha-desktop): Desktop client based on [Election.js](https://www.electronjs.org/) and [IPFS](https://ipfs.io/). Can be downloaded directly and used as a IPFS browser.
-  * [Hypha extension](https://github.com/hypha-publication/hypha-extension): Browser extension client based on [js-ipfs](https://github.com/ipfs/js-ipfs) and [orbit-db](https://github.com/orbitdb/orbit-db). Can be used for private p2p messaging etc. Heavily under development.
+  * [Hypha Desktop](https://github.com/hypha-publication/hypha-desktop): Desktop client based on [Election.js](https://www.electronjs.org/) and [IPFS](https://ipfs.io/). Can be downloaded directly and used as an IPFS browser.
+  * [Hypha extension](https://github.com/hypha-publication/hypha-extension): Browser extension client based on [js-ipfs](https://github.com/ipfs/js-ipfs) and [orbit-db](https://github.com/orbitdb/orbit-db). Can be used for private P2P messaging etc. Heavily under development.
 * [Beaker Browser](https://github.com/beakerbrowser/beaker): A stable p2p browser supporting [`://dat` protocol](https://dat.foundation/). There are some [discussions](https://github.com/beakerbrowser/unwalled.garden/issues/51) and experiments about adapting Matters to Beaker Browser via [unwalled.garden](https://github.com/beakerbrowser/unwalled.garden) protocol and [Hyperdrive](https://github.com/hypercore-protocol/hyperdrive).
 
 # Community projects
