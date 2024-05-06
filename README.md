@@ -24,23 +24,23 @@ Matters uses GraphQL for the API layer. Read the API documentation and test quer
 
 # Architecture
 
-![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
-
-After cloning this repo, you can view the [SchemaSpy](http://schemaspy.org/) generated database documentation by opening `doc/db/index.html`.
+![Architecture diagram, rendered from [excalidraw file](./doc/architecture-diagram.excalidraw)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
 
 # Reposories
 
-The following are major repositories used by matters.town.
+The following are major repositories used by Matters.Town.
 
 ## Backend
 - [server](https://github.com/thematters/matters-server): Main repo for Matters server. Written in Typescript, using [Apollo Server](https://github.com/apollographql/apollo-server) for GraphQL API.
+- [contracts](https://github.com/thematters/contracts): Smart contracts.
+- [lambda functions](https://github.com/thematters/lambda-handlers): Queue & cron jobs.
 - [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate the cache in Matters server.
 - [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda function. Used to resize and transcode images in Matters server.
 - [queue dashboard](https://github.com/thematters/matters-queue-dashboard): GUI for for [Bee Queue](https://github.com/bee-queue/bee-queue) and [Bull](https://github.com/optimalbits/bull). Used to view queue jobs in Matters server.
 
 ## Frontend
 - [web](https://github.com/thematters/matters-web): Main repo for Matters web client. Written in Typescript, built with [React](https://reactjs.org/), [Nextjs](https://nextjs.org/) and [Apollo Client](https://github.com/apollographql/apollo-client).
-- [editor](https://github.com/thematters/matters-editor): Opinionated WYSWYG editor used at matters.town, built with [Quilljs](https://github.com/quilljs/quill).
+- [editor](https://github.com/thematters/matters-editor): Opinionated WYSWYG editor used at Matters.Town, built with [Tiptap](https://tiptap.dev/).
 - [upload client](https://github.com/thematters/apollo-upload-client): File upload for GraphQL. Fork of [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client) with persistence query support.
 
 ## Shared
@@ -62,7 +62,7 @@ interoperable with Matters sever.
 - [MatREQ](https://matters.town/@jugu/%E9%9D%9E%E5%AE%98%E6%96%B9-matters%E8%A8%B1%E9%A1%98%E6%B1%A0-zdpuAxEfdxG6MdBHnE7rEvCeAG6TPay6i8ychgiq2EoRRMv2s): [Request articles](https://mat.52tw.cc/) on certain topic.
 - [matters-muter](https://matters.town/@deserve/%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AFmatters%E7%9A%84%E5%85%A8%E7%AB%99%E5%B1%8F%E8%94%BD-%E6%8B%89%E9%BB%91-%E9%9D%99%E9%9F%B3%E5%8A%9F%E8%83%BD-zdpuAwGnxxMnyvaBJwCszuRrHjqprMohMPkXXWfYYKwEzvkrX): Browser extension to mute articles and comments of given users, support shared blacklist. For [Chrome](https://chrome.google.com/webstore/detail/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/hpbebebpjajeiadiakgckpahmhkbkpoa) and [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/), [open sourced](https://github.com/contributionls/matters-muter).
 - [matters2ipfs](https://matters.town/@deserve/matters%E6%96%87%E7%AB%A0%E7%8E%B0%E5%9C%A8%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E5%9C%A8%E7%BA%BF%E8%BD%AC%E4%B8%BA%E5%A2%99%E5%86%85%E9%93%BE%E6%8E%A5%E4%BA%86-zdpuB1bvMnsAr4APk12FmdRxcqMaEsRo46vKE7p6Arvsg4YiF): convert matters article to ipfs public gateway that can be accessed within GFW, [open sourced](https://github.com/contributionls/matters2ipfs).
-- [matters personal website](https://matters.town/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): personal website mirrored from matters.town, [open sourced](https://github.com/vibertthio/matters-third-party).
+- [matters personal website](https://matters.town/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): personal website mirrored from Matters.Town, [open sourced](https://github.com/vibertthio/matters-third-party).
 
 # Hall of Fame
 

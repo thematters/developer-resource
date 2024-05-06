@@ -19,9 +19,7 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 
 # 架构
 
-![Architecture diagram, rendered from [drawio file](./doc/architecture-diagram.drawio)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
-
-克隆当前仓库后，打开 `doc/db/index.html` 文件可查看 [SchemaSpy](http://schemaspy.org/) 数据库文档。
+![Architecture diagram, rendered from [excalidraw file](./doc/architecture-diagram.excalidraw)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
 
 # 代码仓库
 
@@ -29,13 +27,15 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 
 ## 后端
 - [server](https://github.com/thematters/matters-server): Matters 服务器主仓库。使用 Typescript，基于 [Apollo Server](https://github.com/apollographql/apollo-server)建构 GraphQL API。
+- [contracts](https://github.com/thematters/contracts): 智能合约。
+- [lambda functions](https://github.com/thematters/lambda-handlers): 队列与定时任务。
 - [query cache](https://github.com/thematters/apollo-response-cache): 用于缓存控制与清理的 GraphQL directives 及 Apollo Server 插件。
 - [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda 函数，用于图片压缩与转码。
 - [queue dashboard](https://github.com/thematters/matters-queue-dashboard): 对接 [Bee Queue](https://github.com/bee-queue/bee-queue) 与 [Bull](https://github.com/optimalbits/bull) 的图形介面，用于查看 Matters 服务器中的队列任务。
 
 ## 前端
 - [web](https://github.com/thematters/matters-web): Matters 网页客户端主仓库。使用 Typescript，基于 [React](https://reactjs.org/)，[Nextjs](https://nextjs.org/) 与 [Apollo Client](https://github.com/apollographql/apollo-client)。
-- [editor](https://github.com/thematters/matters-editor): matters.town 所见即所得编辑器，基于 [Quilljs](https://github.com/quilljs/quill)。
+- [editor](https://github.com/thematters/matters-editor): Matters.Town 所见即所得编辑器，基于 [Tiptap](https://tiptap.dev/)。
 - [upload client](https://github.com/thematters/apollo-upload-client): GraphQL文件上传组件。Fork 自 [apollo-upload-client](https://github.com/jaydenseric/apollo-upload-client)，支持 persistence query。
 
 ## 通用
@@ -58,7 +58,7 @@ Matters 在持续探索更好的点对点信息分發的机制和协议。以下
 - [MatREQ](https://matters.town/@jugu/%E9%9D%9E%E5%AE%98%E6%96%B9-matters%E8%A8%B1%E9%A1%98%E6%B1%A0-zdpuAxEfdxG6MdBHnE7rEvCeAG6TPay6i8ychgiq2EoRRMv2s): 向 Matters 用户[请求特定主题的文章](https://mat.52tw.cc/)。
 - [matters 消音器](https://matters.town/@deserve/%E4%BD%BF%E7%94%A8%E8%BF%99%E4%B8%AA%E6%B5%8F%E8%A7%88%E5%99%A8%E6%89%A9%E5%B1%95%E4%B8%80%E9%94%AE%E5%BC%80%E5%90%AFmatters%E7%9A%84%E5%85%A8%E7%AB%99%E5%B1%8F%E8%94%BD-%E6%8B%89%E9%BB%91-%E9%9D%99%E9%9F%B3%E5%8A%9F%E8%83%BD-zdpuAwGnxxMnyvaBJwCszuRrHjqprMohMPkXXWfYYKwEzvkrX): 浏览器插件，用于屏蔽特定用户，支持共享黑名单。有[Chrome](https://chrome.google.com/webstore/detail/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/hpbebebpjajeiadiakgckpahmhkbkpoa) 与 [Firefox](https://addons.mozilla.org/zh-CN/firefox/addon/matters-%E6%B6%88%E9%9F%B3%E5%99%A8/) 两个版本，[代码开源](https://github.com/contributionls/matters-muter)。
 - [matters2ipfs](https://matters.town/@deserve/matters%E6%96%87%E7%AB%A0%E7%8E%B0%E5%9C%A8%E5%8F%AF%E4%BB%A5%E4%B8%80%E9%94%AE%E5%9C%A8%E7%BA%BF%E8%BD%AC%E4%B8%BA%E5%A2%99%E5%86%85%E9%93%BE%E6%8E%A5%E4%BA%86-zdpuB1bvMnsAr4APk12FmdRxcqMaEsRo46vKE7p6Arvsg4YiF): 将 Matters 文章转为 ipfs 链接，可以在墙内打开，[代码开源](https://github.com/contributionls/matters2ipfs).
-- [matters 个人网站](https://matters.town/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): 通过 matters.town 备份的个人网站，[代码开源](https://github.com/vibertthio/matters-third-party)。
+- [matters 个人网站](https://matters.town/@vibertthio/%E7%9C%9F%E6%AD%A3%E5%8E%BB%E4%B8%AD%E5%BF%83%E5%AA%92%E9%AB%94%E7%9A%84%E7%AC%AC%E4%B8%80%E6%AD%A5-%E5%81%9A%E4%B8%80%E5%80%8B-matters-%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E7%B6%B2%E7%AB%99-zdpuArgJXADPgWJ8TfvRWWStTvkYC1vqCTV6fHayisbrABkBp): 通过 Matters.Town 备份的个人网站，[代码开源](https://github.com/vibertthio/matters-third-party)。
 
 # 名誉榜
 
