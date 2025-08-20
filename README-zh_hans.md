@@ -19,7 +19,52 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 
 # 架构
 
-![Architecture diagram, rendered from [excalidraw file](./doc/architecture-diagram.excalidraw)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+```mermaid
+C4Context
+title Matters System Architecture
+
+Container_Ext(cloudflare, "Cloudflare", "CDN + WAF", "Protects and accelerates traffic")
+
+Boundary(feBoundary, "Frontend", "") {
+    Boundary(mattersWebBoundary, "matters.town", "thematters/matters-web") {
+        Container(ssrServer, "SSR Server", "Elastic Beanstalk", "Next.js, Apollo Client")
+    }
+}
+
+Boundary(beBoundary, "Backend", "") {
+    Boundary(mattersServerBoundary, "matters-server", "thematters/matters-server") {
+        Container(apiServer, "API Server","Elastic Beanstalk", "Handles GraphQL requests and Payment/Oauth callbacks")
+  ContainerQueue(queues, "Job Queue", "SQS", "")
+        Container(queuejob, "Job Worker", "Lambda", "Processes jobs from queues")
+        Container(cronjob, "Cronjob", "Lambda", "Handles cronjob")
+    }
+    Boundary(thirdPartiesBoundary, "Third Party Providers", "") {
+        Container_Ext(stripe, "Stripe", "", "Supports fiat payment")
+        Container_Ext(likecoin, "Likecoin", "", "Supports likecoin payment") 
+        Container_Ext(sendgrid, "SendGrid", "", "Sends Emails")
+        Container_Ext(gcp, "GCP", "", "Support translation")
+        Container_Ext(opensea, "OpenSea", "", "Support NFT queries for users")
+        Container_Ext(sentry, "Sentry", "", "Monitors logging")
+    }
+}
+
+Boundary(storageBoundary, "Storage", "") {
+    ContainerDb(databases, "Postgres", "RDS", "Stores application data")
+    Container(cache, "Cache", "Elasticache", "Improves read performance")
+    Container(image, "Images Storage", "Cloudflare Images", "Serves images through CDN")
+    Container(audio, "Audio Storage", "S3 + CloudFront", "Serves Audio files")
+    Container(search, "Search Server", "EC2, Postgresql", "Fulltext search")
+    Container_Ext(ipfs, "IPFS/IPNS", "Storacha, Pinata", "Articles IPFS/IPNS storage")
+    ContainerDb(bigquery, "BigQuery", "BigQuery", "Stores analytics data and audit logs")
+}
+
+
+Rel(cloudflare, ssrServer, "Filtered traffic", "HTTPS")
+Rel(ssrServer, apiServer, "GraphQL queries", "HTTPS")
+Rel(apiServer, queues,  "Events", "")
+Rel(queues, queuejob,  "Trigger", "")
+
+```
 
 # 代码仓库
 
@@ -30,8 +75,6 @@ Matters 使用 GraphQL 作为 API 接口，详情见[简介文章](https://matte
 - [contracts](https://github.com/thematters/contracts): 智能合约。
 - [lambda functions](https://github.com/thematters/lambda-handlers): 队列与定时任务。
 - [query cache](https://github.com/thematters/apollo-response-cache): 用于缓存控制与清理的 GraphQL directives 及 Apollo Server 插件。
-- [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda 函数，用于图片压缩与转码。
-- [queue dashboard](https://github.com/thematters/matters-queue-dashboard): 对接 [Bee Queue](https://github.com/bee-queue/bee-queue) 与 [Bull](https://github.com/optimalbits/bull) 的图形介面，用于查看 Matters 服务器中的队列任务。
 
 ## 前端
 - [web](https://github.com/thematters/matters-web): Matters 网页客户端主仓库。使用 Typescript，基于 [React](https://reactjs.org/)，[Nextjs](https://nextjs.org/) 与 [Apollo Client](https://github.com/apollographql/apollo-client)。

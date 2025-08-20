@@ -24,7 +24,52 @@ Matters uses GraphQL for the API layer. Read the API documentation and test quer
 
 # Architecture
 
-![Architecture diagram, rendered from [excalidraw file](./doc/architecture-diagram.excalidraw)](./doc/architecture-diagram.png "Architecture diagram showing simplified data flow.")
+```mermaid
+C4Context
+title Matters System Architecture
+
+Container_Ext(cloudflare, "Cloudflare", "CDN + WAF", "Protects and accelerates traffic")
+
+Boundary(feBoundary, "Frontend", "") {
+    Boundary(mattersWebBoundary, "matters.town", "thematters/matters-web") {
+        Container(ssrServer, "SSR Server", "Elastic Beanstalk", "Next.js, Apollo Client")
+    }
+}
+
+Boundary(beBoundary, "Backend", "") {
+    Boundary(mattersServerBoundary, "matters-server", "thematters/matters-server") {
+        Container(apiServer, "API Server","Elastic Beanstalk", "Handles GraphQL requests and Payment/Oauth callbacks")
+  ContainerQueue(queues, "Job Queue", "SQS", "")
+        Container(queuejob, "Job Worker", "Lambda", "Processes jobs from queues")
+        Container(cronjob, "Cronjob", "Lambda", "Handles cronjob")
+    }
+    Boundary(thirdPartiesBoundary, "Third Party Providers", "") {
+        Container_Ext(stripe, "Stripe", "", "Supports fiat payment")
+        Container_Ext(likecoin, "Likecoin", "", "Supports likecoin payment") 
+        Container_Ext(sendgrid, "SendGrid", "", "Sends Emails")
+        Container_Ext(gcp, "GCP", "", "Support translation")
+        Container_Ext(opensea, "OpenSea", "", "Support NFT queries for users")
+        Container_Ext(sentry, "Sentry", "", "Monitors logging")
+    }
+}
+
+Boundary(storageBoundary, "Storage", "") {
+    ContainerDb(databases, "Postgres", "RDS", "Stores application data")
+    Container(cache, "Cache", "Elasticache", "Improves read performance")
+    Container(image, "Images Storage", "Cloudflare Images", "Serves images through CDN")
+    Container(audio, "Audio Storage", "S3 + CloudFront", "Serves Audio files")
+    Container(search, "Search Server", "EC2, Postgresql", "Fulltext search")
+    Container_Ext(ipfs, "IPFS/IPNS", "Storacha, Pinata", "Articles IPFS/IPNS storage")
+    ContainerDb(bigquery, "BigQuery", "BigQuery", "Stores analytics data and audit logs")
+}
+
+
+Rel(cloudflare, ssrServer, "Filtered traffic", "HTTPS")
+Rel(ssrServer, apiServer, "GraphQL queries", "HTTPS")
+Rel(apiServer, queues,  "Events", "")
+Rel(queues, queuejob,  "Trigger", "")
+
+```
 
 # Reposories
 
@@ -35,8 +80,6 @@ The following are major repositories used by Matters.Town.
 - [contracts](https://github.com/thematters/contracts): Smart contracts.
 - [lambda functions](https://github.com/thematters/lambda-handlers): Queue & cron jobs.
 - [query cache](https://github.com/thematters/apollo-response-cache): Cache related GraphQL directives and Apollo Server plugins. Used to control and invalidate the cache in Matters server.
-- [image processing](https://github.com/thematters/serverless-file-post-processing): AWS lambda function. Used to resize and transcode images in Matters server.
-- [queue dashboard](https://github.com/thematters/matters-queue-dashboard): GUI for for [Bee Queue](https://github.com/bee-queue/bee-queue) and [Bull](https://github.com/optimalbits/bull). Used to view queue jobs in Matters server.
 
 ## Frontend
 - [web](https://github.com/thematters/matters-web): Main repo for Matters web client. Written in Typescript, built with [React](https://reactjs.org/), [Nextjs](https://nextjs.org/) and [Apollo Client](https://github.com/apollographql/apollo-client).
