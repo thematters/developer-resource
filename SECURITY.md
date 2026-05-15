@@ -35,7 +35,7 @@ Below are some issues we have determined as not posing a great risk, or requirin
 3. Registering multiple accounts for a single user.
 4. Automation of certain actions such as like, commend or read article. 
 5. Vulnerabilities in third party tools that utilizes Matters API.
-6. Internal mechanism and logic of third party projects such as LikeCoin or IPFS
+6. Internal mechanism and logic of third party projects such as IPFS or other external services
 
 
 ## We hope you: 
@@ -62,10 +62,11 @@ Below are some issues we have determined as not posing a great risk, or requirin
 
 ## Rewards
 
-We will decide, at our sole discretion, the level of reward based on severity of the bug and completeness of the submission. The reward can be paid in LikeCoin (preferred) or US dollars.
+We will decide, at our sole discretion, the level of reward based on severity of the bug, completeness of the submission, and our available budget. Rewards, when granted, are paid in US dollars only.
 
+This reward schedule takes effect on 2026.05.19 and does not apply retroactively.
 
-### Critical: $500 (50000 LIKE)
+### Critical: up to $200
 
 Critical severity issues present a direct and immediate risk to a broad array of our users or to Matters itself. For example:
 
@@ -78,7 +79,7 @@ Critical severity issues present a direct and immediate risk to a broad array of
 - pay or withdraw from another user’s wallet
 
  
-### High: $150 (15000 LIKE)
+### High: up to $100
 
 High severity issues allow an attacker to read or modify sensitive data that they are not authorized to access. They are generally more narrow in scope than critical issues, though they may still grant an attacker extensive access. For example:
 
@@ -89,7 +90,7 @@ High severity issues allow an attacker to read or modify sensitive data that the
 - gaining access to a non-critical resource that only Matters team should be able to reach
 
  
-### Medium: $100 (10000 LIKE)
+### Medium: up to $50
 
 Medium severity issues allow an attacker to read or modify limited amounts of data that they are not authorized to access. They generally grant access to less sensitive information or more limited scope than high severity issues. For example:
 
@@ -117,4 +118,4 @@ We deal only with principals, not vulnerability brokers.
 
 If you reside in a country on a United States restricted export control list, or are on a United States state federal criminal wanted list or restricted export control list, you are not eligible to participate in this program.
 
-We will make the final decision on bug eligibility and value. This program may be modified or canceled at any time, and any changes we make to these programs terms do not apply retroactively. Thanks for helping us make Matters more secure!
+We will make the final decision on bug eligibility and value. This program may be modified or canceled at any time, and any changes we make to these program terms, including the reward schedule effective on 2026.05.19, do not apply retroactively. Thanks for helping us make Matters more secure!
