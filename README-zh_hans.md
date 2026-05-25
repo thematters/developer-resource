@@ -115,3 +115,7 @@ Matters 在持续探索更好的点对点信息分發的机制和协议。以下
   * 上传文件至 IPFS 时缺少大小或者域名检查
 * [Aidil Arief](https://www.facebook.com/aidilarf.co.id)
   * 登陆页重定向 XSS
+* Letztek
+  * 外部 URL 上传 SSRF
+  * DNS rebinding 与重定向绕过
+  * GraphQL Playground 在正式环境暴露

@@ -122,3 +122,7 @@ We would like to thank everyone on the following list for making our products mo
   * XSS on login redirect
 * Unique Kamboj
   * Missing SPF records on domain name
+* Letztek
+  * SSRF on external URL upload
+  * DNS rebinding and open redirect bypass
+  * GraphQL Playground exposed in production
