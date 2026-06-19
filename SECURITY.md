@@ -64,6 +64,8 @@ Below are some issues we have determined as not posing a great risk, or requirin
 
 We will decide, at our sole discretion, the level of reward based on severity of the bug, completeness of the submission, and our available budget. Rewards, when granted, are paid in US dollars only.
 
+If a reward is granted, you must claim it within 90 days after we notify you. Rewards not claimed within this period will be considered forfeited.
+
 This reward schedule takes effect on 2026.05.19 and does not apply retroactively.
 
 ### Critical: up to $200
